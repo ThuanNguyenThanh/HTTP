@@ -1,0 +1,434 @@
+2017-03-07 14:11:20,228 : {Debug} Server Start on port:0
+2017-03-07 14:13:07,150 : {Debug} Server Start on port:9999
+2017-03-07 14:14:09,318 : {Debug} Accept connection from 127.0.0.1:49560 URI / -1 bytes
+2017-03-07 14:14:09,318 : {Error} Response code=401 mes=Wrong method
+2017-03-07 14:14:09,369 : {Debug} Accept connection from 127.0.0.1:49562 URI /favicon.ico -1 bytes
+2017-03-07 14:14:09,369 : {Error} Response code=401 mes=Wrong method
+2017-03-07 14:14:09,489 : {Debug} Accept connection from 127.0.0.1:49564 URI /favicon.ico -1 bytes
+2017-03-07 14:14:09,489 : {Error} Response code=401 mes=Wrong method
+2017-03-07 14:29:16,142 : {Debug} Server Start on port:9999
+2017-03-07 14:30:39,928 : {Debug} Accept connection from 127.0.0.1:49918 URI / 4 bytes
+2017-03-07 14:30:39,928 : {Error} Response code=404 mes=Wrong API
+2017-03-07 14:30:43,205 : {Debug} Accept connection from 127.0.0.1:49920 URI / 4 bytes
+2017-03-07 14:30:43,205 : {Error} Response code=404 mes=Wrong API
+2017-03-07 14:30:46,669 : {Debug} Accept connection from 127.0.0.1:49922 URI / 4 bytes
+2017-03-07 14:30:46,669 : {Error} Response code=404 mes=Wrong API
+2017-03-07 16:13:00,060 : {Debug} Server Start on port:9999
+2017-03-07 16:13:13,978 : {Debug} Server Start on port:9999
+2017-03-07 16:15:57,127 : {Debug} Server Start on port:9999
+2017-03-07 16:16:36,125 : {Debug} Server Start on port:9999
+2017-03-07 16:20:36,835 : {Debug} Server Start on port:9999
+2017-03-07 16:20:44,479 : {Debug} Accept connection from 127.0.0.1:50864 URI / 4 bytes
+2017-03-07 16:20:44,479 : {Error} Response code=404 mes=Wrong API
+2017-03-07 16:22:49,463 : {Debug} Accept connection from 127.0.0.1:50868 URI / 4 bytes
+2017-03-07 16:22:49,463 : {Error} Response code=404 mes=Wrong API
+2017-03-07 16:23:09,533 : {Debug} Accept connection from 127.0.0.1:50870 URI / 4 bytes
+2017-03-07 16:23:09,533 : {Error} Response code=404 mes=Wrong API
+2017-03-07 16:31:26,360 : {Debug} Accept connection from 127.0.0.1:50912 URI / 4 bytes
+2017-03-07 16:31:26,360 : {Error} Response code=404 mes=Wrong API
+2017-03-07 16:33:00,003 : {Debug} Accept connection from 127.0.0.1:50916 URI / 4 bytes
+2017-03-07 16:33:00,004 : {Error} Response code=404 mes=Wrong API
+2017-03-07 17:30:14,386 : {Debug} Server Start on port:9999
+2017-03-07 17:30:20,945 : {Debug} Accept connection from 127.0.0.1:51588 URI / 4 bytes
+2017-03-07 17:30:20,945 : {Error} Response code=404 mes=Wrong API
+2017-03-07 17:31:23,321 : {Debug} Accept connection from 127.0.0.1:51592 URI / 4 bytes
+2017-03-07 17:31:23,321 : {Error} Response code=404 mes=Wrong API
+2017-03-08 13:48:35,210 : {Debug} Server Start on port:9999
+2017-03-08 13:48:43,967 : {Debug} Accept connection from 127.0.0.1:39136 URI /abc/def/ 4 bytes
+2017-03-08 13:48:43,967 : {Error} Response code=404 mes=Wrong API
+2017-03-08 13:50:26,116 : {Debug} Accept connection from 127.0.0.1:39146 URI /group/api/ 4 bytes
+2017-03-08 13:50:26,116 : {Error} Response code=404 mes=Wrong API
+2017-03-08 13:51:44,169 : {Debug} Accept connection from 127.0.0.1:39152 URI /group/api/string 4 bytes
+2017-03-08 13:55:28,076 : {Debug} Server Start on port:9999
+2017-03-08 13:56:00,908 : {Debug} Server Start on port:9999
+2017-03-08 13:56:32,148 : {Debug} Server Start on port:9999
+2017-03-08 13:56:48,804 : {Debug} Accept connection from 127.0.0.1:39202 URI /group/api/string 4 bytes
+2017-03-08 14:01:05,010 : {Debug} Server Start on port:9999
+2017-03-08 14:01:08,950 : {Debug} Accept connection from 127.0.0.1:39340 URI /group/api/string 4 bytes
+2017-03-08 14:01:42,656 : {Debug} Accept connection from 127.0.0.1:39342 URI /group/api/string 4 bytes
+2017-03-08 14:02:06,030 : {Debug} Server Start on port:9999
+2017-03-08 14:02:08,592 : {Debug} Accept connection from 127.0.0.1:39346 URI /group/api/string 4 bytes
+2017-03-08 14:25:30,636 : {Debug} Server Start on port:9999
+2017-03-08 14:25:38,935 : {Debug} Accept connection from 127.0.0.1:39692 URI /group/api/string 6 bytes
+2017-03-08 14:26:07,407 : {Debug} Server Start on port:9999
+2017-03-08 14:26:11,578 : {Debug} Accept connection from 127.0.0.1:39696 URI /group/api/string 6 bytes
+2017-03-08 14:29:45,535 : {Debug} Server Start on port:9999
+2017-03-08 14:29:48,999 : {Debug} Accept connection from 127.0.0.1:39708 URI /group/api/string 6 bytes
+2017-03-08 14:40:24,372 : {Debug} Server Start on port:9999
+2017-03-08 14:40:28,010 : {Debug} Accept connection from 127.0.0.1:39938 URI /group/api/string 14 bytes
+2017-03-08 14:42:04,619 : {Debug} Server Start on port:9999
+2017-03-08 14:42:15,911 : {Debug} Accept connection from 127.0.0.1:39946 URI /group/api/string 14 bytes
+2017-03-08 14:59:49,105 : {Debug} Server Start on port:9999
+2017-03-08 14:59:52,894 : {Debug} Accept connection from 127.0.0.1:40152 URI /group/api/string 20 bytes
+2017-03-08 15:00:53,446 : {Debug} Server Start on port:9999
+2017-03-08 15:00:58,379 : {Debug} Accept connection from 127.0.0.1:40154 URI /group/api/string 26 bytes
+2017-03-10 09:09:35,855 : {Debug} Server Start on port:9999
+2017-03-10 09:09:56,956 : {Debug} Accept connection from 127.0.0.1:47486 URI /group/api/add 26 bytes
+2017-03-10 09:11:39,351 : {Debug} Server Start on port:9999
+2017-03-10 09:11:52,166 : {Debug} Accept connection from 127.0.0.1:47500 URI /group/api/add 26 bytes
+2017-03-10 09:21:25,151 : {Debug} Server Start on port:9999
+2017-03-10 09:22:09,709 : {Debug} Accept connection from 127.0.0.1:47636 URI /group/api/protobuf 26 bytes
+2017-03-10 09:22:54,863 : {Debug} Server Start on port:9999
+2017-03-10 09:23:02,793 : {Debug} Accept connection from 127.0.0.1:47638 URI /group/api/protobuf 26 bytes
+2017-03-10 09:24:07,112 : {Debug} Accept connection from 127.0.0.1:47640 URI /group/api/protobuf 26 bytes
+2017-03-10 09:25:38,824 : {Debug} Accept connection from 127.0.0.1:47678 URI /group/api/protobuf 26 bytes
+2017-03-10 09:25:54,563 : {Debug} Accept connection from 127.0.0.1:47682 URI /group/api/protobuf 26 bytes
+2017-03-10 09:26:57,287 : {Debug} Accept connection from 127.0.0.1:47684 URI /group/api/protobuf 26 bytes
+2017-03-10 09:27:08,230 : {Debug} Accept connection from 127.0.0.1:47688 URI /group/api/protobuf 26 bytes
+2017-03-10 09:27:18,008 : {Debug} Accept connection from 127.0.0.1:47690 URI /group/api/protobuf 26 bytes
+2017-03-10 09:28:45,819 : {Debug} Accept connection from 127.0.0.1:47824 URI /group/api/protobuf 26 bytes
+2017-03-10 09:29:03,381 : {Debug} Accept connection from 127.0.0.1:47826 URI /group/api/protobuf 26 bytes
+2017-03-10 09:29:49,682 : {Debug} Accept connection from 127.0.0.1:47832 URI /group/api/add 26 bytes
+2017-03-10 09:38:27,913 : {Debug} Server Start on port:9999
+2017-03-10 09:38:37,362 : {Debug} Accept connection from 127.0.0.1:47962 URI /group/api/add 28 bytes
+2017-03-10 09:47:29,497 : {Debug} Server Start on port:9999
+2017-03-10 09:47:33,616 : {Debug} Accept connection from 127.0.0.1:48038 URI /group/api/add 28 bytes
+2017-03-10 09:50:31,567 : {Debug} Accept connection from 127.0.0.1:48054 URI /group/api/add 28 bytes
+2017-03-10 09:50:45,175 : {Debug} Server Start on port:9999
+2017-03-10 09:50:53,887 : {Debug} Server Start on port:9999
+2017-03-10 09:50:59,273 : {Debug} Accept connection from 127.0.0.1:48056 URI /group/api/add 28 bytes
+2017-03-10 09:51:09,447 : {Debug} Accept connection from 127.0.0.1:48058 URI /group/api/add 28 bytes
+2017-03-10 09:52:07,190 : {Debug} Server Start on port:9999
+2017-03-10 09:53:24,391 : {Debug} Server Start on port:9999
+2017-03-10 09:53:28,019 : {Debug} Accept connection from 127.0.0.1:48062 URI /group/api/add 28 bytes
+2017-03-10 09:54:30,397 : {Debug} Server Start on port:9999
+2017-03-10 09:54:36,722 : {Debug} Accept connection from 127.0.0.1:48066 URI /group/api/add 28 bytes
+2017-03-10 09:56:21,760 : {Debug} Server Start on port:9999
+2017-03-10 09:56:30,260 : {Debug} Accept connection from 127.0.0.1:48074 URI /group/api/add 28 bytes
+2017-03-10 09:57:57,231 : {Debug} Server Start on port:9999
+2017-03-10 09:58:06,508 : {Debug} Accept connection from 127.0.0.1:48078 URI /group/api/add 28 bytes
+2017-03-10 10:00:03,877 : {Debug} Server Start on port:9999
+2017-03-10 10:00:08,302 : {Debug} Accept connection from 127.0.0.1:48090 URI /group/api/add 28 bytes
+2017-03-10 10:00:32,520 : {Debug} Server Start on port:9999
+2017-03-10 10:00:37,070 : {Debug} Accept connection from 127.0.0.1:48092 URI /group/api/add 28 bytes
+2017-03-10 10:03:16,559 : {Debug} Server Start on port:9999
+2017-03-10 10:03:30,840 : {Debug} Accept connection from 127.0.0.1:48098 URI /group/api/add 28 bytes
+2017-03-10 10:04:40,027 : {Debug} Server Start on port:9999
+2017-03-10 10:04:52,294 : {Debug} Accept connection from 127.0.0.1:48104 URI /group/api/add 28 bytes
+2017-03-10 10:05:17,515 : {Debug} Accept connection from 127.0.0.1:48108 URI /group/api/add 28 bytes
+2017-03-10 10:05:46,749 : {Debug} Server Start on port:9999
+2017-03-10 10:05:52,533 : {Debug} Accept connection from 127.0.0.1:48110 URI /group/api/add 28 bytes
+2017-03-10 10:17:47,512 : {Debug} Server Start on port:9999
+2017-03-10 10:17:57,957 : {Debug} Accept connection from 127.0.0.1:48154 URI /group/api/add 28 bytes
+2017-03-10 10:19:00,702 : {Debug} Server Start on port:9999
+2017-03-10 10:19:06,089 : {Debug} Accept connection from 127.0.0.1:48158 URI /group/api/add 28 bytes
+2017-03-10 10:19:20,276 : {Debug} Accept connection from 127.0.0.1:48162 URI /group/api/add 28 bytes
+2017-03-10 10:19:50,567 : {Debug} Accept connection from 127.0.0.1:48170 URI /group/api/add 28 bytes
+2017-03-10 10:21:51,023 : {Debug} Server Start on port:9999
+2017-03-10 10:22:02,453 : {Debug} Accept connection from 127.0.0.1:48172 URI /group/api/add 28 bytes
+2017-03-10 10:22:54,524 : {Debug} Server Start on port:9999
+2017-03-10 10:22:57,561 : {Debug} Accept connection from 127.0.0.1:48174 URI /group/api/add 28 bytes
+2017-03-10 10:24:37,249 : {Debug} Server Start on port:9999
+2017-03-10 10:24:50,771 : {Debug} Accept connection from 127.0.0.1:48178 URI /group/api/add 28 bytes
+2017-03-10 10:28:14,142 : {Debug} Server Start on port:9999
+2017-03-10 10:28:17,387 : {Debug} Accept connection from 127.0.0.1:48188 URI /group/api/add 28 bytes
+2017-03-10 10:28:43,123 : {Debug} Server Start on port:9999
+2017-03-10 10:28:52,316 : {Debug} Accept connection from 127.0.0.1:48192 URI /group/api/add 28 bytes
+2017-03-10 10:31:11,892 : {Debug} Server Start on port:9999
+2017-03-10 10:31:18,968 : {Debug} Accept connection from 127.0.0.1:48198 URI /group/api/add 28 bytes
+2017-03-10 10:31:54,883 : {Debug} Server Start on port:9999
+2017-03-10 10:31:57,039 : {Debug} Accept connection from 127.0.0.1:48200 URI /group/api/add 28 bytes
+2017-03-10 10:34:07,621 : {Debug} Server Start on port:9999
+2017-03-10 10:34:11,540 : {Debug} Accept connection from 127.0.0.1:48204 URI /group/api/add 28 bytes
+2017-03-10 10:35:16,396 : {Debug} Server Start on port:9999
+2017-03-10 10:35:20,609 : {Debug} Accept connection from 127.0.0.1:48208 URI /group/api/add 28 bytes
+2017-03-10 10:36:28,580 : {Debug} Server Start on port:9999
+2017-03-10 10:36:31,829 : {Debug} Accept connection from 127.0.0.1:48214 URI /group/api/add 28 bytes
+2017-03-10 10:37:22,606 : {Debug} Server Start on port:9999
+2017-03-10 10:37:25,802 : {Debug} Accept connection from 127.0.0.1:48216 URI /group/api/add 28 bytes
+2017-03-10 10:41:57,759 : {Debug} Server Start on port:9999
+2017-03-10 10:42:02,590 : {Debug} Accept connection from 127.0.0.1:48230 URI /group/api/add 28 bytes
+2017-03-10 10:49:36,649 : {Debug} Server Start on port:9999
+2017-03-10 10:49:46,209 : {Debug} Accept connection from 127.0.0.1:48264 URI /group/api/sub 28 bytes
+2017-03-10 10:49:46,209 : {Error} Response code=404 mes=Wrong API
+2017-03-10 10:59:07,203 : {Debug} Server Start on port:9999
+2017-03-10 10:59:17,940 : {Debug} Accept connection from 127.0.0.1:48276 URI /group/api/add 28 bytes
+2017-03-10 11:08:27,161 : {Debug} Server Start on port:9999
+2017-03-10 11:08:29,734 : {Debug} Accept connection from 127.0.0.1:48334 URI / 4 bytes
+2017-03-10 11:08:29,734 : {Error} Response code=404 mes=Wrong API
+2017-03-10 11:09:37,405 : {Debug} Accept connection from 127.0.0.1:48340 URI /group/api/add 26 bytes
+2017-03-10 11:11:23,949 : {Debug} Server Start on port:9999
+2017-03-10 11:11:32,768 : {Debug} Accept connection from 127.0.0.1:48356 URI /group/api/add 26 bytes
+2017-03-10 11:11:48,473 : {Debug} Accept connection from 127.0.0.1:48358 URI /group/api/string 26 bytes
+2017-03-10 11:13:26,330 : {Debug} Accept connection from 127.0.0.1:48362 URI /group/api/add 26 bytes
+2017-03-10 11:13:45,613 : {Debug} Server Start on port:9999
+2017-03-10 11:13:47,814 : {Debug} Accept connection from 127.0.0.1:48364 URI /group/api/add 26 bytes
+2017-03-10 11:15:40,389 : {Debug} Server Start on port:9999
+2017-03-10 11:15:45,599 : {Debug} Accept connection from 127.0.0.1:48384 URI /group/api/add 26 bytes
+2017-03-10 11:37:52,649 : {Debug} Server Start on port:9999
+2017-03-10 11:38:01,289 : {Debug} Accept connection from 127.0.0.1:48690 URI /group/api/sub 26 bytes
+2017-03-10 11:38:01,289 : {Error} Response code=404 mes=Wrong API
+2017-03-10 11:38:47,872 : {Debug} Accept connection from 127.0.0.1:48694 URI /group/api/sub 26 bytes
+2017-03-10 11:38:47,872 : {Error} Response code=404 mes=Wrong API
+2017-03-10 11:49:47,889 : {Debug} Server Start on port:9999
+2017-03-10 11:49:55,033 : {Debug} Accept connection from 127.0.0.1:48764 URI /group/api/sub 26 bytes
+2017-03-13 11:17:10,692 : {Debug} Server Start on port:9999
+2017-03-13 11:17:31,038 : {Debug} Server Start on port:9999
+2017-03-13 11:17:36,441 : {Debug} Accept connection from 127.0.0.1:59492 URI /group/api/add 26 bytes
+2017-03-13 11:18:20,614 : {Debug} Accept connection from 127.0.0.1:59494 URI /group/api/sub -1 bytes
+2017-03-13 11:18:20,614 : {Error} Response code=401 mes=Wrong method
+2017-03-13 11:18:36,811 : {Debug} Accept connection from 127.0.0.1:59496 URI /group/api/sub 26 bytes
+2017-03-13 11:18:50,639 : {Debug} Accept connection from 127.0.0.1:59498 URI /group/api/sub 26 bytes
+2017-03-13 11:19:06,768 : {Debug} Accept connection from 127.0.0.1:59500 URI /group/api/sub 26 bytes
+2017-03-13 11:53:04,320 : {Debug} Server Start on port:9999
+2017-03-13 11:53:10,224 : {Debug} Accept connection from 127.0.0.1:54434 URI /group/api/addstring 52 bytes
+2017-03-13 11:53:18,835 : {Debug} Accept connection from 127.0.0.1:54436 URI /group/api/addstring 52 bytes
+2017-03-13 11:54:31,117 : {Debug} Server Start on port:9999
+2017-03-13 11:54:35,189 : {Debug} Accept connection from 127.0.0.1:54444 URI /group/api/addstring 52 bytes
+2017-03-13 11:56:07,635 : {Debug} Server Start on port:9999
+2017-03-13 11:56:11,151 : {Debug} Accept connection from 127.0.0.1:54454 URI /group/api/addstring 39 bytes
+2017-03-13 13:40:31,746 : {Debug} Server Start on port:9999
+2017-03-13 13:40:35,290 : {Debug} Accept connection from 127.0.0.1:55610 URI /group/api/addstring 39 bytes
+2017-03-13 13:42:37,010 : {Debug} Server Start on port:9999
+2017-03-13 13:42:39,871 : {Debug} Accept connection from 127.0.0.1:55612 URI /group/api/addstring 39 bytes
+2017-03-13 13:44:01,624 : {Debug} Server Start on port:9999
+2017-03-13 13:44:12,782 : {Debug} Accept connection from 127.0.0.1:55618 URI /group/api/addstring 39 bytes
+2017-03-13 13:46:11,252 : {Debug} Server Start on port:9999
+2017-03-13 13:46:14,501 : {Debug} Accept connection from 127.0.0.1:55630 URI /group/api/addstring 39 bytes
+2017-03-13 13:52:19,034 : {Debug} Server Start on port:9999
+2017-03-13 13:52:22,700 : {Debug} Accept connection from 127.0.0.1:55644 URI /group/api/addstring 33 bytes
+2017-03-13 13:52:56,779 : {Debug} Server Start on port:9999
+2017-03-13 13:53:00,819 : {Debug} Accept connection from 127.0.0.1:55650 URI /group/api/addstring 33 bytes
+2017-03-13 13:53:42,180 : {Debug} Accept connection from 127.0.0.1:55652 URI /group/api/addstring 46 bytes
+2017-03-13 13:57:28,323 : {Debug} Accept connection from 127.0.0.1:55736 URI /group/api/addstring 46 bytes
+2017-03-22 16:59:47,081 : {Debug} Server Start on port:9999
+2017-03-22 17:00:19,739 : {Debug} Server Start on port:9999
+2017-03-22 17:02:25,800 : {Debug} Accept connection from 127.0.0.1:52584 URI /group/api/addstring 45 bytes
+2017-03-22 17:06:20,162 : {Debug} Accept connection from 127.0.0.1:52628 URI /group/api/addstring 45 bytes
+2017-03-22 17:12:06,753 : {Debug} Server Start on port:9999
+2017-03-22 17:12:30,683 : {Debug} Accept connection from 127.0.0.1:52674 URI /group/api/addstring 45 bytes
+2017-03-23 10:04:28,430 : {Debug} Server Start on port:9999
+2017-03-23 10:04:35,640 : {Debug} Accept connection from 127.0.0.1:52542 URI /group/api/notification 70 bytes
+2017-03-23 10:20:47,042 : {Debug} Server Start on port:9999
+2017-03-23 10:20:54,638 : {Debug} Accept connection from 127.0.0.1:53182 URI /group/api/notification 70 bytes
+2017-03-23 10:24:28,501 : {Debug} Server Start on port:9999
+2017-03-23 10:24:37,811 : {Debug} Accept connection from 127.0.0.1:53198 URI /group/api/notification 70 bytes
+2017-03-23 10:27:53,290 : {Debug} Server Start on port:9999
+2017-03-23 10:27:58,071 : {Debug} Accept connection from 127.0.0.1:53210 URI /group/api/notification 69 bytes
+2017-03-23 10:30:09,130 : {Debug} Server Start on port:9999
+2017-03-23 10:30:11,281 : {Debug} Accept connection from 127.0.0.1:53224 URI /group/api/notification 69 bytes
+2017-03-23 10:31:20,602 : {Debug} Server Start on port:9999
+2017-03-23 10:31:40,361 : {Debug} Server Start on port:9999
+2017-03-23 10:31:42,806 : {Debug} Accept connection from 127.0.0.1:53226 URI /group/api/notification 69 bytes
+2017-03-23 10:40:15,378 : {Debug} Server Start on port:9999
+2017-03-23 10:40:20,343 : {Debug} Accept connection from 127.0.0.1:53366 URI /group/api/notification 48 bytes
+2017-03-23 10:45:47,588 : {Debug} Server Start on port:9999
+2017-03-23 10:45:55,575 : {Debug} Accept connection from 127.0.0.1:53468 URI /group/api/notification 66 bytes
+2017-03-23 10:47:26,563 : {Debug} Server Start on port:9999
+2017-03-23 10:47:34,166 : {Debug} Accept connection from 127.0.0.1:53480 URI /group/api/notification 67 bytes
+2017-03-23 10:48:44,411 : {Debug} Server Start on port:9999
+2017-03-23 10:48:53,677 : {Debug} Accept connection from 127.0.0.1:53482 URI /group/api/notification 67 bytes
+2017-03-23 10:49:38,801 : {Debug} Server Start on port:9999
+2017-03-23 10:49:49,333 : {Debug} Accept connection from 127.0.0.1:53484 URI /group/api/notification 67 bytes
+2017-03-23 10:50:18,829 : {Debug} Accept connection from 127.0.0.1:53488 URI /group/api/notification 67 bytes
+2017-03-23 10:57:21,109 : {Debug} Server Start on port:9999
+2017-03-23 10:57:27,736 : {Debug} Accept connection from 127.0.0.1:53610 URI /group/api/notification 67 bytes
+2017-03-23 10:57:43,496 : {Debug} Accept connection from 127.0.0.1:53612 URI /group/api/notification 67 bytes
+2017-03-23 10:58:22,944 : {Debug} Accept connection from 127.0.0.1:53614 URI /group/api/notification 67 bytes
+2017-03-23 10:58:51,305 : {Debug} Server Start on port:9999
+2017-03-23 10:59:05,117 : {Debug} Accept connection from 127.0.0.1:53616 URI /group/api/notification 67 bytes
+2017-03-23 11:01:39,310 : {Debug} Server Start on port:9999
+2017-03-23 11:01:43,648 : {Debug} Accept connection from 127.0.0.1:53624 URI /group/api/notification 69 bytes
+2017-03-23 11:02:24,990 : {Debug} Server Start on port:9999
+2017-03-23 11:02:35,033 : {Debug} Server Start on port:9999
+2017-03-23 11:02:38,828 : {Debug} Accept connection from 127.0.0.1:53634 URI /group/api/notification 69 bytes
+2017-03-23 11:11:13,525 : {Debug} Server Start on port:9999
+2017-03-23 11:11:16,266 : {Debug} Accept connection from 127.0.0.1:53712 URI /group/api/notification 69 bytes
+2017-03-23 11:13:39,423 : {Debug} Accept connection from 127.0.0.1:53722 URI /group/api/notification 61 bytes
+2017-03-23 11:14:14,618 : {Debug} Server Start on port:9999
+2017-03-23 11:14:35,276 : {Debug} Accept connection from 127.0.0.1:53726 URI /group/api/notification 61 bytes
+2017-03-23 11:16:21,423 : {Debug} Server Start on port:9999
+2017-03-23 11:16:26,302 : {Debug} Accept connection from 127.0.0.1:53734 URI /group/api/notification 60 bytes
+2017-03-23 11:17:41,883 : {Debug} Server Start on port:9999
+2017-03-23 11:17:45,721 : {Debug} Accept connection from 127.0.0.1:53742 URI /group/api/notification 67 bytes
+2017-03-23 11:19:21,621 : {Debug} Server Start on port:9999
+2017-03-23 11:19:25,966 : {Debug} Accept connection from 127.0.0.1:53744 URI /group/api/notification 65 bytes
+2017-03-23 11:19:30,302 : {Debug} Accept connection from 127.0.0.1:53746 URI /group/api/notification 65 bytes
+2017-03-23 11:19:53,132 : {Debug} Accept connection from 127.0.0.1:53748 URI /group/api/notification 62 bytes
+2017-03-23 11:20:03,452 : {Debug} Accept connection from 127.0.0.1:53754 URI /group/api/notification 62 bytes
+2017-03-23 11:20:13,021 : {Debug} Server Start on port:9999
+2017-03-23 11:20:16,699 : {Debug} Accept connection from 127.0.0.1:53756 URI /group/api/notification 62 bytes
+2017-03-23 11:21:09,847 : {Debug} Accept connection from 127.0.0.1:53976 URI /group/api/notification 65 bytes
+2017-03-23 11:22:13,917 : {Debug} Accept connection from 127.0.0.1:53982 URI /group/api/notification 64 bytes
+2017-03-23 11:34:59,817 : {Debug} Server Start on port:9999
+2017-03-23 11:35:04,922 : {Debug} Accept connection from 127.0.0.1:54126 URI /group/api/notification 64 bytes
+2017-03-23 13:54:18,484 : {Debug} Server Start on port:9999
+2017-03-23 13:54:22,474 : {Debug} Accept connection from 127.0.0.1:54828 URI /group/api/notification 64 bytes
+2017-03-23 16:54:26,331 : {Debug} Server Start on port:9999
+2017-03-23 16:54:30,417 : {Debug} Accept connection from 127.0.0.1:58752 URI /group/api/notification 64 bytes
+2017-03-23 17:26:26,936 : {Debug} Accept connection from 127.0.0.1:60178 URI /group/api/notification 64 bytes
+2017-03-23 18:01:02,282 : {Debug} Server Start on port:9999
+2017-03-23 18:01:06,693 : {Debug} Accept connection from 127.0.0.1:60932 URI /group/api/notification 58 bytes
+2017-03-23 18:01:13,542 : {Debug} Accept connection from 127.0.0.1:60934 URI /group/api/notification 58 bytes
+2017-03-23 18:02:24,792 : {Debug} Accept connection from 127.0.0.1:60942 URI /group/api/notification 58 bytes
+2017-03-24 09:06:33,526 : {Debug} Server Start on port:9999
+2017-03-24 09:06:41,552 : {Debug} Accept connection from 127.0.0.1:51598 URI /group/api/notification 58 bytes
+2017-03-24 09:58:39,974 : {Debug} Server Start on port:9999
+2017-03-24 09:58:48,144 : {Debug} Accept connection from 127.0.0.1:45550 URI /group/api/notification 57 bytes
+2017-03-24 10:00:38,881 : {Debug} Server Start on port:9999
+2017-03-24 10:00:40,353 : {Debug} Accept connection from 127.0.0.1:45558 URI /group/api/notification 57 bytes
+2017-03-24 10:04:08,660 : {Debug} Accept connection from 127.0.0.1:45570 URI /group/api/notification 58 bytes
+2017-03-24 10:05:36,889 : {Debug} Accept connection from 127.0.0.1:45578 URI /group/api/notification 50 bytes
+2017-03-24 10:07:31,248 : {Debug} Accept connection from 127.0.0.1:45588 URI /group/api/notification 57 bytes
+2017-03-24 10:08:35,165 : {Debug} Server Start on port:9999
+2017-03-24 10:08:39,996 : {Debug} Accept connection from 127.0.0.1:45600 URI /group/api/notification 57 bytes
+2017-03-24 10:08:48,406 : {Debug} Accept connection from 127.0.0.1:45602 URI /group/api/notification 57 bytes
+2017-03-24 10:09:28,950 : {Debug} Accept connection from 127.0.0.1:45608 URI /group/api/notification 57 bytes
+2017-03-24 10:09:33,875 : {Debug} Accept connection from 127.0.0.1:45610 URI /group/api/notification 57 bytes
+2017-03-24 10:19:30,259 : {Debug} Server Start on port:9999
+2017-03-24 10:19:33,894 : {Debug} Accept connection from 127.0.0.1:45794 URI /group/api/notification 57 bytes
+2017-03-24 10:24:05,778 : {Debug} Accept connection from 127.0.0.1:45816 URI /group/api/notification 59 bytes
+2017-03-24 10:32:34,736 : {Debug} Server Start on port:9999
+2017-03-24 10:46:18,919 : {Debug} Server Start on port:9999
+2017-03-24 10:52:23,250 : {Debug} Server Start on port:9999
+2017-03-24 10:54:41,845 : {Debug} Accept connection from 127.0.0.1:45974 URI /group/api/notification 45 bytes
+2017-03-24 10:55:11,308 : {Debug} Accept connection from 127.0.0.1:45976 URI /group/api/notification 52 bytes
+2017-03-24 11:04:11,848 : {Debug} Accept connection from 127.0.0.1:46268 URI /group/api/notification 53 bytes
+2017-03-24 11:05:44,623 : {Debug} Accept connection from 127.0.0.1:46278 URI /group/api/notification 53 bytes
+2017-03-24 11:06:32,988 : {Debug} Accept connection from 127.0.0.1:46282 URI /group/api/notification 54 bytes
+2017-03-27 09:26:03,052 : {Debug} Server Start on port:9999
+2017-03-27 09:26:18,261 : {Debug} Accept connection from 127.0.0.1:43232 URI /group/api/notification 46 bytes
+2017-03-27 09:38:45,140 : {Debug} Server Start on port:9999
+2017-03-27 09:38:56,823 : {Debug} Accept connection from 127.0.0.1:43490 URI /group/api/notification 47 bytes
+2017-03-27 09:39:46,655 : {Debug} Server Start on port:9999
+2017-03-27 09:39:57,511 : {Debug} Accept connection from 127.0.0.1:43492 URI /group/api/notification 44 bytes
+2017-03-27 09:42:19,289 : {Debug} Server Start on port:9999
+2017-03-27 09:42:32,990 : {Debug} Accept connection from 127.0.0.1:43504 URI /group/api/notification 43 bytes
+2017-03-27 10:26:22,453 : {Debug} Server Start on port:9999
+2017-03-27 10:26:34,538 : {Debug} Accept connection from 127.0.0.1:44616 URI /group/api/notification 41 bytes
+2017-03-27 10:26:52,370 : {Debug} Accept connection from 127.0.0.1:44742 URI /group/api/notification 50 bytes
+2017-03-27 10:31:11,618 : {Debug} Server Start on port:9999
+2017-03-27 10:31:35,064 : {Debug} Accept connection from 127.0.0.1:44900 URI /group/api/notification 46 bytes
+2017-03-27 10:32:34,060 : {Debug} Server Start on port:9999
+2017-03-27 10:32:55,295 : {Debug} Accept connection from 127.0.0.1:44902 URI /group/api/notification 47 bytes
+2017-03-27 10:35:35,071 : {Debug} Server Start on port:9999
+2017-03-27 10:38:48,302 : {Debug} Server Start on port:9999
+2017-03-27 10:39:03,333 : {Debug} Accept connection from 127.0.0.1:45054 URI /group/api/notification 57 bytes
+2017-03-27 10:56:48,284 : {Debug} Server Start on port:9999
+2017-03-27 10:57:01,741 : {Debug} Accept connection from 127.0.0.1:45178 URI /group/api/notification 59 bytes
+2017-03-27 10:57:57,226 : {Debug} Server Start on port:9999
+2017-03-27 10:58:06,981 : {Debug} Accept connection from 127.0.0.1:45188 URI /group/api/notification 58 bytes
+2017-03-27 10:59:39,136 : {Debug} Server Start on port:9999
+2017-03-27 10:59:49,260 : {Debug} Accept connection from 127.0.0.1:45198 URI /group/api/notification 42 bytes
+2017-03-27 11:02:35,459 : {Debug} Server Start on port:9999
+2017-03-27 11:02:44,315 : {Debug} Accept connection from 127.0.0.1:45238 URI /group/api/notification 52 bytes
+2017-03-27 11:03:44,605 : {Debug} Server Start on port:9999
+2017-03-27 11:03:57,666 : {Debug} Accept connection from 127.0.0.1:45240 URI /group/api/notification 52 bytes
+2017-03-27 11:05:10,752 : {Debug} Server Start on port:9999
+2017-03-27 11:05:25,786 : {Debug} Accept connection from 127.0.0.1:45250 URI /group/api/notification 51 bytes
+2017-03-27 11:05:46,386 : {Debug} Accept connection from 127.0.0.1:45260 URI /group/api/notification 44 bytes
+2017-03-27 11:05:59,201 : {Debug} Server Start on port:9999
+2017-03-27 11:06:12,649 : {Debug} Accept connection from 127.0.0.1:45270 URI /group/api/notification 45 bytes
+2017-03-27 11:06:42,472 : {Debug} Server Start on port:9999
+2017-03-27 11:06:49,681 : {Debug} Accept connection from 127.0.0.1:45280 URI /group/api/notification 45 bytes
+2017-03-27 11:09:46,388 : {Debug} Server Start on port:9999
+2017-03-27 11:09:52,016 : {Debug} Accept connection from 127.0.0.1:45292 URI /group/api/notification 45 bytes
+2017-03-27 11:12:02,082 : {Debug} Server Start on port:9999
+2017-03-27 11:12:10,055 : {Debug} Accept connection from 127.0.0.1:45326 URI /group/api/notification 43 bytes
+2017-03-27 11:42:25,370 : {Debug} Server Start on port:9999
+2017-03-27 11:42:32,818 : {Debug} Accept connection from 127.0.0.1:45708 URI /group/api/notification 42 bytes
+2017-03-27 11:42:42,181 : {Debug} Server Start on port:9999
+2017-03-27 11:42:51,498 : {Debug} Accept connection from 127.0.0.1:45718 URI /group/api/notification 44 bytes
+2017-03-27 11:44:54,237 : {Debug} Server Start on port:9999
+2017-03-27 11:45:11,105 : {Debug} Accept connection from 127.0.0.1:45732 URI /group/api/notification 44 bytes
+2017-03-27 14:13:41,546 : {Debug} Server Start on port:9999
+2017-03-27 14:13:53,721 : {Debug} Accept connection from 127.0.0.1:47136 URI /group/api/notification 44 bytes
+2017-03-27 14:15:03,424 : {Debug} Server Start on port:9999
+2017-03-27 14:15:21,216 : {Debug} Accept connection from 127.0.0.1:47152 URI /group/api/notification 44 bytes
+2017-03-27 14:17:07,619 : {Debug} Server Start on port:9999
+2017-03-27 14:17:23,887 : {Debug} Accept connection from 127.0.0.1:47170 URI /group/api/notification 53 bytes
+2017-03-27 14:17:52,791 : {Debug} Server Start on port:9999
+2017-03-27 14:18:05,871 : {Debug} Accept connection from 127.0.0.1:47180 URI /group/api/notification 44 bytes
+2017-03-27 14:19:36,800 : {Debug} Server Start on port:9999
+2017-03-27 14:19:47,654 : {Debug} Accept connection from 127.0.0.1:47192 URI /group/api/notification 42 bytes
+2017-03-27 14:21:00,999 : {Debug} Server Start on port:9999
+2017-03-27 14:21:11,150 : {Debug} Accept connection from 127.0.0.1:47374 URI /group/api/notification 47 bytes
+2017-03-27 14:24:37,008 : {Debug} Server Start on port:9999
+2017-03-27 14:24:48,060 : {Debug} Accept connection from 127.0.0.1:47386 URI /group/api/notification 46 bytes
+2017-03-27 14:37:13,600 : {Debug} Server Start on port:9999
+2017-03-27 14:37:27,431 : {Debug} Accept connection from 127.0.0.1:47588 URI /group/api/notification 46 bytes
+2017-03-27 14:37:59,630 : {Debug} Accept connection from 127.0.0.1:47600 URI /group/api/notification 45 bytes
+2017-03-27 14:38:38,238 : {Debug} Accept connection from 127.0.0.1:47610 URI /group/api/notification 43 bytes
+2017-03-27 14:40:47,828 : {Debug} Server Start on port:9999
+2017-03-27 14:40:56,621 : {Debug} Accept connection from 127.0.0.1:47814 URI /group/api/notification 43 bytes
+2017-03-27 17:39:32,667 : {Debug} Server Start on port:9999
+2017-03-27 17:39:40,224 : {Debug} Accept connection from 127.0.0.1:49912 URI /group/api/notification 43 bytes
+2017-03-27 17:41:15,397 : {Debug} Server Start on port:9999
+2017-03-27 17:41:32,247 : {Debug} Accept connection from 127.0.0.1:49928 URI /group/api/notification 45 bytes
+2017-03-27 17:43:49,624 : {Debug} Server Start on port:9999
+2017-03-27 17:43:58,006 : {Debug} Accept connection from 127.0.0.1:49944 URI /group/api/notification 44 bytes
+2017-03-27 18:21:34,981 : {Debug} Server Start on port:9999
+2017-03-27 18:21:42,366 : {Debug} Accept connection from 127.0.0.1:50130 URI /group/api/notification 47 bytes
+2017-03-27 18:22:07,870 : {Debug} Server Start on port:9999
+2017-03-27 18:22:17,758 : {Debug} Accept connection from 127.0.0.1:50140 URI /group/api/notification 46 bytes
+2017-03-27 18:25:12,448 : {Debug} Server Start on port:9999
+2017-03-27 18:25:23,461 : {Debug} Accept connection from 127.0.0.1:50156 URI /group/api/notification 53 bytes
+2017-03-27 18:26:17,564 : {Debug} Accept connection from 127.0.0.1:50174 URI /group/api/notification 45 bytes
+2017-03-27 18:27:31,422 : {Debug} Server Start on port:9999
+2017-03-27 18:27:52,875 : {Debug} Accept connection from 127.0.0.1:50184 URI /group/api/notification 54 bytes
+2017-03-28 08:29:59,935 : {Debug} Server Start on port:9999
+2017-03-28 08:30:05,957 : {Debug} Accept connection from 127.0.0.1:49530 URI /group/api/notification 46 bytes
+2017-03-28 08:30:17,987 : {Debug} Accept connection from 127.0.0.1:49534 URI /group/api/notification 45 bytes
+2017-03-28 08:32:30,265 : {Debug} Accept connection from 127.0.0.1:49756 URI /group/api/notification 46 bytes
+2017-03-28 08:43:54,898 : {Debug} Server Start on port:9999
+2017-03-28 08:44:11,468 : {Debug} Accept connection from 127.0.0.1:49798 URI /group/api/notification 43 bytes
+2017-03-28 08:44:43,573 : {Debug} Server Start on port:9999
+2017-03-28 08:44:54,667 : {Debug} Accept connection from 127.0.0.1:49806 URI /group/api/notification 43 bytes
+2017-03-28 09:24:19,510 : {Debug} Server Start on port:9999
+2017-03-28 09:24:28,090 : {Debug} Accept connection from 127.0.0.1:50106 URI /group/api/notification 45 bytes
+2017-03-28 09:26:20,039 : {Debug} Server Start on port:9999
+2017-03-28 09:26:32,249 : {Debug} Accept connection from 127.0.0.1:50124 URI /group/api/notification 46 bytes
+2017-03-28 09:27:20,102 : {Debug} Server Start on port:9999
+2017-03-28 09:27:28,297 : {Debug} Accept connection from 127.0.0.1:50144 URI /group/api/notification 44 bytes
+2017-03-28 10:25:39,917 : {Debug} Server Start on port:9999
+2017-03-28 10:25:46,719 : {Debug} Accept connection from 127.0.0.1:50848 URI /group/api/notification 43 bytes
+2017-03-28 10:28:50,748 : {Debug} Server Start on port:9999
+2017-03-28 10:29:02,157 : {Debug} Accept connection from 127.0.0.1:50860 URI /group/api/notification 52 bytes
+2017-03-28 10:29:28,523 : {Debug} Server Start on port:9999
+2017-03-28 10:29:38,493 : {Debug} Accept connection from 127.0.0.1:50870 URI /group/api/notification 46 bytes
+2017-03-28 10:33:18,669 : {Debug} Server Start on port:9999
+2017-03-28 10:33:28,612 : {Debug} Accept connection from 127.0.0.1:50886 URI /group/api/notification 47 bytes
+2017-03-28 10:38:18,981 : {Debug} Server Start on port:9999
+2017-03-28 10:38:46,217 : {Debug} Accept connection from 127.0.0.1:50918 URI /group/api/notification 64 bytes
+2017-03-28 10:42:47,258 : {Debug} Server Start on port:9999
+2017-03-28 10:43:00,879 : {Debug} Accept connection from 127.0.0.1:50932 URI /group/api/notification 52 bytes
+2017-03-28 10:43:21,255 : {Debug} Accept connection from 127.0.0.1:50934 URI /group/api/notification 45 bytes
+2017-03-28 10:45:58,635 : {Debug} Server Start on port:9999
+2017-03-28 10:46:10,950 : {Debug} Accept connection from 127.0.0.1:50956 URI /group/api/notification 53 bytes
+2017-03-28 10:51:06,912 : {Debug} Server Start on port:9999
+2017-03-28 10:51:18,836 : {Debug} Accept connection from 127.0.0.1:50966 URI /group/api/notification 52 bytes
+2017-03-28 10:57:14,744 : {Debug} Server Start on port:9999
+2017-03-28 10:57:25,505 : {Debug} Accept connection from 127.0.0.1:50982 URI /group/api/notification 53 bytes
+2017-03-28 11:07:26,470 : {Debug} Server Start on port:9999
+2017-03-28 11:07:34,748 : {Debug} Accept connection from 127.0.0.1:51290 URI /group/api/notification 51 bytes
+2017-03-28 11:09:02,798 : {Debug} Server Start on port:9999
+2017-03-28 11:09:08,854 : {Debug} Server Start on port:9999
+2017-03-28 11:09:20,531 : {Debug} Accept connection from 127.0.0.1:51500 URI /group/api/notification 53 bytes
+2017-03-28 11:22:47,113 : {Debug} Server Start on port:9999
+2017-03-28 11:23:05,357 : {Debug} Accept connection from 127.0.0.1:52306 URI /group/api/notification 52 bytes
+2017-03-28 11:24:31,633 : {Debug} Server Start on port:9999
+2017-03-28 11:24:44,629 : {Debug} Accept connection from 127.0.0.1:52324 URI /group/api/notification 59 bytes
+2017-03-28 15:40:04,975 : {Debug} Server Start on port:9999
+2017-03-28 15:40:15,381 : {Debug} Accept connection from 127.0.0.1:37542 URI /group/api/notification 44 bytes
+2017-03-28 15:40:48,964 : {Debug} Accept connection from 127.0.0.1:37742 URI /group/api/notification 49 bytes
+2017-03-28 15:41:59,811 : {Debug} Server Start on port:9999
+2017-03-28 15:42:08,579 : {Debug} Accept connection from 127.0.0.1:37752 URI /group/api/notification 53 bytes
+2017-03-28 15:56:30,310 : {Debug} Server Start on port:9999
+2017-03-28 15:56:51,709 : {Debug} Accept connection from 127.0.0.1:37774 URI /group/api/notification 53 bytes
+2017-03-28 16:05:10,316 : {Debug} Server Start on port:9999
+2017-03-28 16:05:20,306 : {Debug} Accept connection from 127.0.0.1:38034 URI /group/api/notification 46 bytes
+2017-03-28 16:15:26,307 : {Debug} Server Start on port:9999
+2017-03-28 16:15:38,190 : {Debug} Accept connection from 127.0.0.1:38260 URI /group/api/notification 52 bytes
+2017-03-28 16:54:31,845 : {Debug} Server Start on port:9999
+2017-03-28 16:54:51,998 : {Debug} Accept connection from 127.0.0.1:39470 URI /group/api/notification 46 bytes
+2017-03-28 16:56:05,582 : {Debug} Accept connection from 127.0.0.1:39482 URI /group/api/notification 50 bytes
+2017-03-28 16:56:44,046 : {Debug} Accept connection from 127.0.0.1:39484 URI /group/api/notification 55 bytes
+2017-03-28 16:59:39,788 : {Debug} Accept connection from 127.0.0.1:39646 URI /group/api/notification 47 bytes
+2017-03-28 17:03:55,480 : {Debug} Server Start on port:9999
+2017-03-28 17:08:01,609 : {Debug} Accept connection from 127.0.0.1:39828 URI /group/api/notification 43 bytes
+2017-03-28 17:08:29,585 : {Debug} Accept connection from 127.0.0.1:39834 URI /group/api/notification 50 bytes
+2017-03-28 17:11:55,355 : {Debug} Server Start on port:9999
+2017-03-28 17:12:08,439 : {Debug} Accept connection from 127.0.0.1:39974 URI /group/api/notification 46 bytes
+2017-03-28 17:12:20,311 : {Debug} Accept connection from 127.0.0.1:39980 URI /group/api/notification 58 bytes
+2017-03-28 17:13:02,143 : {Debug} Accept connection from 127.0.0.1:39992 URI /group/api/notification 51 bytes
+2017-03-28 17:13:16,911 : {Debug} Accept connection from 127.0.0.1:39994 URI /group/api/notification 46 bytes
