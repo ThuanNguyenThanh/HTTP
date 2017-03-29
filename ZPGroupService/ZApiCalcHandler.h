@@ -23,25 +23,29 @@
 
 typedef struct tagMessageInfo {
     //SenderID
-    std::string strKey1 = "SenderID";
+    std::string strKeySenderID = "SenderID";
     uint32_t uSenderID = 0;
-
+    std::string strSenderID = "SenderID:" + std::to_string(uSenderID);
+    
     //UserID
-    std::string strKey2 = "UserID";
+    std::string strKeyUserID = "UserID";
     uint32_t uUserID = 0;
+    //std::string strSenderID = "SenderID:" + std::to_string(uSenderID);
 
     //Data
-    std::string strKey3 = "Data";
+    std::string strKeyData = "Data";
     std::string strData = "";
 
     //Time start process
-    std::string strKey4 = "TimeStart";
+    std::string strKeyTimeStart = "TimeStart";
     unsigned long long ullTimeStart = 0;
     unsigned long long ullTimeEnd = 0;
     unsigned long long ullTimeProcess = 0;
-
+    
+    //Time process
+    std::string strKeyTimeProcess = "TimeProcess";
     //Result process
-    std::string strKey5 = "Result";
+    std::string strKeyResult = "Result";
 
     uint16_t RandomResult() {
         srand(time(NULL)); //Randomize seed initialization

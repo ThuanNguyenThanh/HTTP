@@ -21,17 +21,26 @@ class ZRedisProcess {
 private:
     //Poco::FastMutex m_mtSync;
     ZCluster m_zcluster;
-    
+
 public:
     ZRedisProcess();
     ZRedisProcess(const ZRedisProcess& orig);
     virtual ~ZRedisProcess();
-    
+
     static ZRedisProcess& GetInstance();
     bool Init(const std::string& host, uint32_t port);
     uint64_t IncrKey(const std::string& strKey);
-    void HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
-    void handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response);
+    bool HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
+
+    bool MsgIDOfSenderID(const std::string& strHash, const std::string& strField, const std::string& uSenderID);
+
+    bool ListMsgIDOfSenderID(const std::string&, const std::string&, const std::string&); //std::vector<uint64_t>& vtMsgIDs);
+    bool ListMsgIDOfUserID(const std::string&, const std::string&, const std::string&);
+    bool ListUserIDOfSenderID(const std::string& uSenderID, std::vector<uint64_t>& vtUserIDs);
+    bool ListSenderIDOfUserID(const std::string& uUserID, std::vector<uint64_t>& vtSenderIDs);
+
+    bool ListUserIDOfSenderID(const std::string&, const std::string&,
+            const std::string&, const std::string&);
 };
 
 #endif /* ZREDISPROCESS_H */
