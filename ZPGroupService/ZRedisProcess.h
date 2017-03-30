@@ -31,16 +31,10 @@ public:
     bool Init(const std::string& host, uint32_t port);
     uint64_t IncrKey(const std::string& strKey);
     bool HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
-
-    bool MsgIDOfSenderID(const std::string& strHash, const std::string& strField, const std::string& uSenderID);
-
-    bool ListMsgIDOfSenderID(const std::string&, const std::string&, const std::string&); //std::vector<uint64_t>& vtMsgIDs);
-    bool ListMsgIDOfUserID(const std::string&, const std::string&, const std::string&);
-    bool ListUserIDOfSenderID(const std::string& uSenderID, std::vector<uint64_t>& vtUserIDs);
-    bool ListSenderIDOfUserID(const std::string& uUserID, std::vector<uint64_t>& vtSenderIDs);
-
-    bool ListUserIDOfSenderID(const std::string&, const std::string&,
-            const std::string&, const std::string&);
+    bool ListUserIDAndSenderIDInfo(const std::string&, const std::string&,
+            const std::string&, const std::string&, const std::string&);
+    
+    bool SumOfReq(const std::string& strHash, const std::string& strField);
 };
 
 #endif /* ZREDISPROCESS_H */

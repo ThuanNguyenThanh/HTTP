@@ -12,6 +12,7 @@
  */
 
 #include "ZRedisProcess.h"
+#include "redis/zcluster.h"
 
 ZRedisProcess::ZRedisProcess() {
 }
@@ -57,47 +58,95 @@ bool ZRedisProcess::HSetMsgID(const std::string& strHash, const std::string& str
     return true;
 }
 
-bool ZRedisProcess::ListMsgIDOfSenderID(const std::string& strHash, const std::string& strField, const std::string& strSenderID)//, std::vector<uint64_t>& vtMsgIDs)
-{
-    if (strHash.empty() || strField.empty() || strSenderID.empty())
+// SenderID send to UserID, MsgID
+
+bool ZRedisProcess::ListUserIDAndSenderIDInfo(const std::string& strHash, const std::string& strFieldSID,
+        const std::string& strFieldUID, const std::string& strSenderID, const std::string& strUserID) {
+
+    if (strHash.empty() || strFieldSID.empty() || strFieldUID.empty() || strSenderID.empty() || strUserID.empty())
         return false;
 
-    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
-        if (m_zcluster.HGetString(strHash, strField).compare(strSenderID))
-            return false;
-        //vtMsgIDs.push_back(std::stoi(strHash));
-        m_zcluster.SAdd("SenderID:" + strSenderID, strHash);
-    }
-    return true;
-}
+    for (uint32_t i = 0; i < std::stoi(strHash); i++) {
+        // SenderID send to UserID, MsgID
+        if (!m_zcluster.HGetString(strHash, strFieldSID).compare(strSenderID)) {
+            m_zcluster.SAdd("SenderID:" + strSenderID, strUserID);
+            m_zcluster.SAdd("SenderID:" + strSenderID, strHash);
+        }
 
-bool ZRedisProcess::ListMsgIDOfUserID(const std::string& strHash, const std::string& strField, const std::string& strUserID)//, std::vector<uint64_t>& vtMsgIDs)
-{
-    if (strHash.empty() || strField.empty() || strUserID.empty())
-        return false;
-
-    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
-        if (m_zcluster.HGetString(strHash, strField).compare(strUserID))
-            return false;
-        //vtMsgIDs.push_back(std::stoi(strHash));
-        m_zcluster.SAdd("UserID:" + strUserID, strHash);
-    }
-    return true;
-}
-
-bool ZRedisProcess::ListUserIDOfSenderID(const std::string& strHash, const std::string& strField,
-        const std::string& strSenderID, const std::string& strUserID) {//, std::vector<uint64_t>& vtMsgIDs) {
-    if (strHash.empty() || strField.empty() || strUserID.empty())
-        return false;
-
-    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
-        if (!m_zcluster.HGetString(strHash, strField).compare(strSenderID)) {
-            //vtMsgIDs.push_back(std::stoi(strHash));
-            m_zcluster.SAdd("SenderID1:" + strSenderID, strUserID);
+        // UserID send to SenderID, MsgID
+        if (!m_zcluster.HGetString(strHash, strFieldUID).compare(strUserID)) {
+            m_zcluster.SAdd("UserID:" + strUserID, strSenderID);
+            m_zcluster.SAdd("UserID:" + strUserID, strHash);
         }
     }
     return true;
 }
+
+bool ZRedisProcess::SumOfReq(const std::string& strHash, const std::string& strField) {
+    if (strHash.empty() || strField.empty())
+        return false;
+    
+    if (!m_zcluster.HGetString(strHash, strField).compare("Success")) {
+        uint64_t u64IncrSuccess = IncrKey("0");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrSuccess), "Success");
+    }
+
+    if (!m_zcluster.HGetString(strHash, strField).compare("Fail")) {
+        uint64_t u64IncrFail = IncrKey("0");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrFail), "Fail");
+    }
+    
+    return true;
+}
+
+
+
+//bool ZRedisProcess::ListMsgIDOfSenderID(const std::string& strHash, const std::string& strField, const std::string& strSenderID)//, std::vector<uint64_t>& vtMsgIDs)
+//{
+//    if (strHash.empty() || strField.empty() || strSenderID.empty())
+//        return false;
+//
+//    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
+//        if (m_zcluster.HGetString(strHash, strField).compare(strSenderID))
+//            return false;
+//        //vtMsgIDs.push_back(std::stoi(strHash));
+//        m_zcluster.SAdd("SenderID:" + strSenderID, strHash);
+//    }
+//    return true;
+//}
+//
+//bool ZRedisProcess::ListMsgIDOfUserID(const std::string& strHash, const std::string& strField, const std::string& strUserID)//, std::vector<uint64_t>& vtMsgIDs)
+//{
+//    if (strHash.empty() || strField.empty() || strUserID.empty())
+//        return false;
+//
+//    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
+//        if (m_zcluster.HGetString(strHash, strField).compare(strUserID))
+//            return false;
+//        //vtMsgIDs.push_back(std::stoi(strHash));
+//        m_zcluster.SAdd("UserID:" + strUserID, strHash);
+//    }
+//    return true;
+//}
+
+
+
+// UserID send to SenderID, MsgID
+//
+//bool ZRedisProcess::ListSenderIDOfUserID(const std::string& strHash, const std::string& strField,
+//        const std::string& strUserID, const std::string& strSenderID) {//, std::vector<uint64_t>& vtMsgIDs) {
+//    if (strHash.empty() || strField.empty() || strUserID.empty())
+//        return false;
+//
+//    for (uint16_t i = 0; i < std::stoi(strHash); i++) {
+//        if (!m_zcluster.HGetString(strHash, strField).compare(strUserID)) {
+//            //vtMsgIDs.push_back(std::stoi(strHash));
+//            m_zcluster.SAdd("UserID:" + strUserID, strSenderID);
+//            m_zcluster.SAdd("UserID:" + strUserID, strHash);
+//        }
+//    }
+//    return true;
+//}
 
 
 

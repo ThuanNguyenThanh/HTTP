@@ -83,10 +83,13 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
 
     std::string strHash = std::to_string(ZRedisProcess::GetInstance().IncrKey("0"));
 
+    // Save Message Infor
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID)) == false)
         return;
+
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID)) == false)
         return;
+
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyData, msg.strData) == false)
         return;
 
@@ -96,26 +99,23 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
 
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyTimeStart, std::to_string(msg.ullTimeStart)) == false)
         return;
+
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyTimeProcess, std::to_string(msg.ullTimeProcess)) == false)
         return;
-
-    if (msg.RandomResult() == 1)
-        msg.strResult = "Success";
-    else
-        msg.strResult = "Fail";
 
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyResult, msg.strResult) == false)
         return;
 
-//    if (!ZRedisProcess::GetInstance().ListMsgIDOfSenderID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID)))
-//        return;
-//
-//    if (!ZRedisProcess::GetInstance().ListMsgIDOfUserID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID)))
-//        return;
-    
-    if (!ZRedisProcess::GetInstance().ListUserIDOfSenderID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID), std::to_string(msg.uUserID)))
+    //Statistics SenderID, UserID
+    if (!ZRedisProcess::GetInstance().ListUserIDAndSenderIDInfo(strHash, msg.strKeySenderID, msg.strKeyUserID, std::to_string(msg.uSenderID), std::to_string(msg.uUserID)))
+        return;
+
+    if (!ZRedisProcess::GetInstance().SumOfReq(strHash, msg.strKeyResult))
         return;
     
-        respStream << ZApiCalcHandler::ProcessData(msg);
+    respStream << ZApiCalcHandler::ProcessData(msg);
+
+    //    if (!ZRedisProcess::GetInstance().ListSenderIDOfUserID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID), std::to_string(msg.uSenderID)))
+    //        return;
 }
 

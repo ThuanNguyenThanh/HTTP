@@ -438,6 +438,42 @@ public:
         DeleteRedisReply(reply);
         return nRet;
     }
+
+    int64_t ZAdd(const std::string& strSet, const std::string& strScore, const std::string strMember) {
+        int64_t i64Ret = -1;
+        if (strSet.empty() || strScore.empty() || strMember.empty() || !m_pCluster)
+            return i64Ret;
+
+        redisReply* reply = ExecCommandRedis(ExecRedisCommand, "ZADD", &strSet, &strScore, &strMember);
+        if (!reply)
+            return i64Ret;
+
+        if (reply->type == REDIS_REPLY_INTEGER) {
+            i64Ret = reply->integer;
+        }
+
+        DeleteRedisReply(reply);
+        return i64Ret;
+    }
+
+    int64_t ZScore(const std::string& strKey, const std::string strMember) {
+        int64_t u64Ret = 0;
+        if (!m_pCluster || strKey.empty() || strMember.empty())
+            return u64Ret;
+
+        redisReply* reply = ExecCommandRedis(ExecRedisCommand, "ZScore", &strKey, &strMember);
+
+        if (!reply)
+            return u64Ret;
+
+        if (reply->type == REDIS_REPLY_INTEGER) {
+            u64Ret = reply->integer;
+        }
+
+        DeleteRedisReply(reply);
+        return u64Ret;
+    }
 };
 
 #endif /* ZCLUSTER_H */
+
