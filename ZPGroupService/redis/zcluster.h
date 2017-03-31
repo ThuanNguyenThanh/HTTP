@@ -439,7 +439,7 @@ public:
         return nRet;
     }
 
-    int64_t ZAdd(const std::string& strSet, const std::string& strScore, const std::string strMember) {
+    int64_t ZAdd(const std::string& strSet, const std::string& strScore, const std::string& strMember) {
         int64_t i64Ret = -1;
         if (strSet.empty() || strScore.empty() || strMember.empty() || !m_pCluster)
             return i64Ret;
@@ -456,24 +456,27 @@ public:
         return i64Ret;
     }
 
-    int64_t ZScore(const std::string& strKey, const std::string strMember) {
-        int64_t u64Ret = 0;
+    int64_t ZScore(const std::string& strKey, const std::string& strMember) {
+        int64_t i64Ret = -1;
         if (!m_pCluster || strKey.empty() || strMember.empty())
-            return u64Ret;
+            return i64Ret;
 
-        redisReply* reply = ExecCommandRedis(ExecRedisCommand, "ZScore", &strKey, &strMember);
+        redisReply* reply = ExecCommandRedis(ExecRedisCommand, "ZSCORE", &strKey, &strMember);
 
         if (!reply)
-            return u64Ret;
+            return i64Ret;
 
-        if (reply->type == REDIS_REPLY_INTEGER) {
-            u64Ret = reply->integer;
+        std::string strRet;
+        if ((reply->type == REDIS_REPLY_STRING) && reply->str) {
+            strRet = std::string(reply->str, reply->len);
         }
 
         DeleteRedisReply(reply);
-        return u64Ret;
+        Poco::NumberParser::tryParse64(strRet, i64Ret);
+        return i64Ret;
     }
 };
+
 
 #endif /* ZCLUSTER_H */
 

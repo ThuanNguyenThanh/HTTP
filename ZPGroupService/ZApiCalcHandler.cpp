@@ -81,7 +81,7 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
         return;
     }
 
-    std::string strHash = std::to_string(ZRedisProcess::GetInstance().IncrKey("0"));
+    std::string strHash = std::to_string(ZRedisProcess::GetInstance().IncrKey("MsgID"));
 
     // Save Message Infor
     if (ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID)) == false)
@@ -110,9 +110,18 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     if (!ZRedisProcess::GetInstance().ListUserIDAndSenderIDInfo(strHash, msg.strKeySenderID, msg.strKeyUserID, std::to_string(msg.uSenderID), std::to_string(msg.uUserID)))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfReq(strHash, msg.strKeyResult))
+    if (!ZRedisProcess::GetInstance().SumOfRequest(strHash, msg.strKeyResult))
         return;
-    
+
+    if (!ZRedisProcess::GetInstance().AverageTimeProccess(strHash, msg.strKeyTimeProcess, std::to_string(msg.ullTimeProcess)))
+        return;
+
+    if (!ZRedisProcess::GetInstance().SumOfSenderID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID)))
+        return;
+
+    if (!ZRedisProcess::GetInstance().SumOfUserID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID)))
+        return;
+
     respStream << ZApiCalcHandler::ProcessData(msg);
 
     //    if (!ZRedisProcess::GetInstance().ListSenderIDOfUserID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID), std::to_string(msg.uSenderID)))

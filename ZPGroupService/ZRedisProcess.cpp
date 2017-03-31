@@ -68,13 +68,13 @@ bool ZRedisProcess::ListUserIDAndSenderIDInfo(const std::string& strHash, const 
 
     for (uint32_t i = 0; i < std::stoi(strHash); i++) {
         // SenderID send to UserID, MsgID
-        if (!m_zcluster.HGetString(strHash, strFieldSID).compare(strSenderID)) {
+        if (!m_zcluster.HGetString(std::to_string(i), strFieldSID).compare(strSenderID)) {
             m_zcluster.SAdd("SenderID:" + strSenderID, strUserID);
             m_zcluster.SAdd("SenderID:" + strSenderID, strHash);
         }
 
         // UserID send to SenderID, MsgID
-        if (!m_zcluster.HGetString(strHash, strFieldUID).compare(strUserID)) {
+        if (!m_zcluster.HGetString(std::to_string(i), strFieldUID).compare(strUserID)) {
             m_zcluster.SAdd("UserID:" + strUserID, strSenderID);
             m_zcluster.SAdd("UserID:" + strUserID, strHash);
         }
@@ -82,23 +82,112 @@ bool ZRedisProcess::ListUserIDAndSenderIDInfo(const std::string& strHash, const 
     return true;
 }
 
-bool ZRedisProcess::SumOfReq(const std::string& strHash, const std::string& strField) {
+bool ZRedisProcess::ReqSuccessAndFail(const std::string& strHash, const std::string& strField) {
     if (strHash.empty() || strField.empty())
         return false;
-    
+
+    //Sum of Request success: ZSCORE Result SumSuccess
     if (!m_zcluster.HGetString(strHash, strField).compare("Success")) {
-        uint64_t u64IncrSuccess = IncrKey("0");
-        m_zcluster.ZAdd(strField, std::to_string(u64IncrSuccess), "Success");
+        uint64_t u64IncrSuccess = IncrKey("CountReqSuccess");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrSuccess), "SumSuccess");
     }
 
+    //Sum of Request fail: ZSCORE Result SumFail
     if (!m_zcluster.HGetString(strHash, strField).compare("Fail")) {
-        uint64_t u64IncrFail = IncrKey("0");
-        m_zcluster.ZAdd(strField, std::to_string(u64IncrFail), "Fail");
+        uint64_t u64IncrFail = IncrKey("CountReqFail");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrFail), "SumFail");
     }
-    
+
     return true;
 }
 
+bool ZRedisProcess::SumOfRequest(const std::string& strHash, const std::string& strField) {
+    if (strHash.empty() || strField.empty() || ReqSuccessAndFail(strHash, strField) == false)
+        return false;
+
+    int64_t u64SumRequest = m_zcluster.ZScore(strField, "SumSuccess") + m_zcluster.ZScore(strField, "SumFail");
+
+    m_zcluster.ZAdd(strField, std::to_string(u64SumRequest), "SumRequest");
+
+    return true;
+}
+
+//List time proccess: ZRANGEBYSCORE TimeProcess +inf -inf WITHSCORES
+
+bool ZRedisProcess::ListTimeProcess(const std::string& strHash, const std::string& strField) {
+    if (strHash.empty() || strField.empty())
+        return false;
+    for (uint64_t i = 1; i < std::stoi(strHash); i++) {
+        std::string strGetTimeProcess = m_zcluster.HGetString(std::to_string(i), strField);
+        m_zcluster.ZAdd(strField, strGetTimeProcess, strHash);
+    }
+    return true;
+}
+
+bool ZRedisProcess::AverageTimeProccess(const std::string& strHash, const std::string& strField, const string& strGetTimeProcess) {
+    if (strHash.empty() || strField.empty() || strGetTimeProcess.empty())
+        return false;
+    RADISPROCCESS RdPro;
+
+    uint64_t u64NumOfMsg = std::stoi(strHash);
+
+    m_zcluster.ZAdd(strField, strGetTimeProcess, strHash);
+
+    if (m_zcluster.ZScore(strField, "AvgTimePro") == -1) {
+        RdPro.u64AvgTimeProccess = RdPro.u64MaxTimeProccess = RdPro.u64MinTimeProccess = std::stoi(strGetTimeProcess);
+        m_zcluster.ZAdd(strField, std::to_string(RdPro.u64MaxTimeProccess), "MaxTimePro");
+        m_zcluster.ZAdd(strField, std::to_string(RdPro.u64MinTimeProccess), "MinTimePro");
+        m_zcluster.ZAdd(strField, std::to_string(RdPro.u64AvgTimeProccess), "AvgTimePro");
+        return true;
+    }
+
+    RdPro.u64AvgTimeProccess = (std::stoi(strGetTimeProcess) + m_zcluster.ZScore(strField, "AvgTimPro") * (u64NumOfMsg - 1)) / u64NumOfMsg;
+    m_zcluster.ZAdd(strField, std::to_string(RdPro.u64AvgTimeProccess), "AvgTimePro");
+
+    if (m_zcluster.ZScore(strField, "MaxTimePro") < std::stoi(strGetTimeProcess)) {
+        RdPro.u64MaxTimeProccess = std::stoi(strGetTimeProcess);
+        m_zcluster.ZAdd(strField, std::to_string(RdPro.u64MaxTimeProccess), "MaxTimePro");
+        return true;
+    }
+
+    if (m_zcluster.ZScore(strField, "MinTimePro") > std::stoi(strGetTimeProcess)) {
+        RdPro.u64MinTimeProccess = std::stoi(strGetTimeProcess);
+        m_zcluster.ZAdd(strField, std::to_string(RdPro.u64MinTimeProccess), "MinTimePro");
+        return true;
+    }
+}
+
+//Sum of SenderID: ZSCORE SenderID SumSenderID
+
+bool ZRedisProcess::SumOfSenderID(const std::string& strHash, const std::string& strField, const std::string& strValue) {
+    if (strHash.empty() || strField.empty() || strValue.empty())
+        return false;
+
+    uint16_t uCheckSenderIDExist = m_zcluster.ZAdd(strField, strValue, "SenderIDExist"); //ZSCORE SenderID SenderIDExist
+
+    if (!strField.compare("SenderID") && !uCheckSenderIDExist) {
+        uint64_t u64IncrSenderID = IncrKey("CountSenderID");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrSenderID), "SumSenderID");
+    }
+
+    return true;
+}
+
+//Sum of UserID : ZSCORE UserID SumUserID
+
+bool ZRedisProcess::SumOfUserID(const std::string& strHash, const std::string & strField, const std::string& strValue) {
+    if (strHash.empty() || strField.empty() || strValue.empty())
+        return false;
+
+    uint16_t uCheckUserIDExist = m_zcluster.ZAdd(strField, strValue, "UserIDExist"); //ZSCORE UserID UserIDExist
+
+    if (!strField.compare("UserID") && !uCheckUserIDExist) {
+        uint64_t u64IncrUserID = IncrKey("CountUserID");
+        m_zcluster.ZAdd(strField, std::to_string(u64IncrUserID), "SumUserID");
+    }
+
+    return true;
+}
 
 
 //bool ZRedisProcess::ListMsgIDOfSenderID(const std::string& strHash, const std::string& strField, const std::string& strSenderID)//, std::vector<uint64_t>& vtMsgIDs)

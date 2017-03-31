@@ -43,7 +43,7 @@ typedef struct tagMessageInfo {
     unsigned long long ullTimeProcess = 0;
 
     //Time process
-    std::string strKeyTimeProcess = "TimeProcess";
+    std::string strKeyTimeProcess = "TimeProccess";
     
     //Result process
     std::string strKeyResult = "Result";
