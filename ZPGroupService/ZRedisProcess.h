@@ -27,6 +27,17 @@ typedef struct tagRadisProccess {
 
 } RADISPROCCESS;
 
+enum ListError {
+    None,
+    ErrEmptyData,
+    ErrCmpSenderID,
+    ErrCmpUserID,
+    ErrSumofSenderID,
+    ErrSumofUserID
+   // ErrCmpUserID,
+
+};
+
 class ZRedisProcess {
 private:
     //Poco::FastMutex m_mtSync;
@@ -39,26 +50,26 @@ public:
 
     static ZRedisProcess& GetInstance();
 
-    bool Init(const std::string& host, uint32_t port);
+    uint16_t Init(const std::string& host, uint32_t port);
 
     uint64_t IncrKey(const std::string& strKey);
 
-    bool HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
+    uint16_t HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
 
-    bool ListUserIDAndSenderIDInfo(const std::string&, const std::string&,
+    uint16_t ListUserIDAndSenderIDInfo(const std::string&, const std::string&,
             const std::string&, const std::string&, const std::string&);
 
-    bool ReqSuccessAndFail(const std::string& strHash, const std::string& strField);
+    uint16_t ReqSuccessAndFail(const std::string& strHash, const std::string& strField);
 
-    bool SumOfRequest(const std::string& strHash);
+    uint16_t SumOfRequest(const std::string& strHash);
 
-    bool ListTimeProcess(const std::string& strHash, const std::string& strField);
+    uint16_t ListTimeProcess(const std::string& strHash, const std::string& strField);
 
-    bool AverageTimeProccess(const std::string&, const std::string&, const std::string&);
+    uint16_t AverageTimeProccess(const std::string&, const std::string&, const std::string&);
 
-    bool SumOfSenderID(const std::string& strHash, const std::string & strField, const std::string& strValue);
+    uint16_t SumOfSenderID(const std::string& strHash, const std::string & strField, const std::string& strValue);
 
-    bool SumOfUserID(const std::string& strHash, const std::string & strField, const std::string& strValue);
+    uint16_t SumOfUserID(const std::string& strHash, const std::string & strField, const std::string& strValue);
 };
 
 #endif /* ZREDISPROCESS_H */

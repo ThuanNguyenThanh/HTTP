@@ -710,3 +710,12 @@
 2017-04-02 11:19:10,400 : {Debug} Accept connection from 127.0.0.1:55614 URI /group/api/notification 45 bytes
 2017-04-02 11:19:28,740 : {Debug} Accept connection from 127.0.0.1:55616 URI /group/api/notification 47 bytes
 2017-04-02 11:21:46,451 : {Debug} Accept connection from 127.0.0.1:55622 URI /group/api/notification 49 bytes
+2017-04-03 00:04:42,165 : {Debug} Server Start on port:9999
+2017-04-03 00:04:59,149 : {Debug} Accept connection from 127.0.0.1:38088 URI /group/api/notification 42 bytes
+2017-04-03 00:08:06,789 : {Debug} Server Start on port:9999
+2017-04-03 00:08:16,495 : {Debug} Accept connection from 127.0.0.1:48378 URI /group/api/notification 43 bytes
+2017-04-03 00:08:43,393 : {Debug} Accept connection from 127.0.0.1:48488 URI /group/api/notification 44 bytes
+2017-04-03 00:08:57,470 : {Debug} Server Start on port:9999
+2017-04-03 00:09:08,692 : {Debug} Accept connection from 127.0.0.1:48498 URI /group/api/notification 42 bytes
+2017-04-03 00:10:13,618 : {Debug} Server Start on port:9999
+2017-04-03 00:10:23,482 : {Debug} Accept connection from 127.0.0.1:48508 URI /group/api/notification 43 bytes
