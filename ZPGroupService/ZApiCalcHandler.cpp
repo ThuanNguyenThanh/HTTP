@@ -110,7 +110,7 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     if (!ZRedisProcess::GetInstance().ListUserIDAndSenderIDInfo(strHash, msg.strKeySenderID, msg.strKeyUserID, std::to_string(msg.uSenderID), std::to_string(msg.uUserID)))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfRequest(strHash, msg.strKeyResult))
+    if (!ZRedisProcess::GetInstance().ReqSuccessAndFail(strHash, msg.strKeyResult))
         return;
 
     if (!ZRedisProcess::GetInstance().AverageTimeProccess(strHash, msg.strKeyTimeProcess, std::to_string(msg.ullTimeProcess)))
