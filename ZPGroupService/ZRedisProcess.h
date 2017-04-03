@@ -67,9 +67,9 @@ public:
 
     uint16_t AverageTimeProccess(const std::string&, const std::string&, const std::string&);
 
-    uint16_t SumOfSenderID(const std::string& strHash, const std::string & strField, const std::string& strValue);
+    uint16_t SumOfSenderID(const std::string & strField, const std::string& strValue);
 
-    uint16_t SumOfUserID(const std::string& strHash, const std::string & strField, const std::string& strValue);
+    uint16_t SumOfUserID(const std::string & strField, const std::string& strValue);
 };
 
 #endif /* ZREDISPROCESS_H */
