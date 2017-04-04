@@ -18,11 +18,11 @@
 #include "redis/zcluster.h"
 
 typedef struct RedisProccess {
-    uint64_t u64Max;
-    uint64_t u64Min;
-    uint64_t u64Avg;
-    int64_t i64NumOfMsg;
-    int64_t i64TimeProccess;
+    uint64_t u64Max = 0;
+    uint64_t u64Min = 0;
+    uint64_t u64Avg = 0;
+    uint64_t u64NumOfMsg = 0;
+    uint64_t u64TimeProccess = 0;
 } REDISPROCCESS;
 
 class ZRedisProcess {
@@ -43,14 +43,12 @@ public:
 
     bool HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
 
-    bool SetUserIDAndSenderIDInfo(const std::string&, const std::string&,
-            const std::string&, const std::string&, const std::string&);
+    bool SetUserIDAndSenderIDInfo(const std::string& strHash, const std::string& strFieldSID,
+            const std::string& strFieldUID, const std::string& strSenderID, const std::string& strUserID);
 
     bool IncreaseResult(const std::string& strHash, const std::string& strField, int64_t& uErrCode);
 
-    //uint16_t ListTimeProcess(const std::string& strHash, const std::string& strField);
-
-    bool GetAverageTimeProccess(const std::string&, const std::string&, const std::string&);
+    bool GetAverageTimeProccess(const std::string& strHash, const std::string& strField, const string& strGetTimeProcess);
 
     bool SumOfSenderID(const std::string & strField, const std::string& strValue, int64_t& i64ErrCode);
 

@@ -60,7 +60,7 @@ void ZApiCalcHandler::GetJson(Poco::Net::HTTPServerRequest& request, Poco::Net::
 
 std::string ZApiCalcHandler::ProcessData(const MSGINFO& msg, const ERRCODE& errCode) {
 
-    std::string strProcess = msg.strData + ": data is processed" + "Error Code: " + std::to_string(errCode.uErrCodeIncr);
+    std::string strProcess = msg.strData + ": data is processed. " + "Error Code: " + std::to_string(errCode.uErrCodeIncr);
     return strProcess;
 }
 
@@ -70,14 +70,12 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     std::ostream& respStream = response.send();
     struct timeval tv, tv1;
     MSGINFO msg;
-    
     ERRCODE errCode; 
 
     GetJson(request, response, respStream, msg);
 
     gettimeofday(&tv, NULL);
     msg.ullTimeStart = tv.tv_usec;
-    //msg.strTimeStart = __TIMESTAMP__;
 
     if (!bCheckInit) {
         std::cerr << "Can not connect to redis cluster!!!" << std::endl;

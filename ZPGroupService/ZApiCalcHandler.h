@@ -24,12 +24,12 @@
 typedef struct tagMessageInfo {
     //SenderID
     std::string strKeySenderID = "SenderID";
-    uint32_t uSenderID = 0;
+    uint64_t uSenderID = 0;
     std::string strSenderID = "SenderID:" + std::to_string(uSenderID);
 
     //UserID
     std::string strKeyUserID = "UserID";
-    uint32_t uUserID = 0;
+    uint64_t uUserID = 0;
     //std::string strSenderID = "SenderID:" + std::to_string(uSenderID);
 
     //Data

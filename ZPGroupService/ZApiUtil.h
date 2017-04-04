@@ -22,9 +22,9 @@ class ZApiUtil
 public:
     static std::string GetResponseString(uint32_t u32Code, const std::string& strMessage);
     // static uint64_t GetExpireTime(uint64_t u64Deadline);
-    static bool GetIntegerValueFromJSonString(const std::string& strJSonData, const std::string& strKey, uint32_t& u32Value);
-    static bool GetStringValueFromJSonString(const std::string& strJSonData, const std::string& strKey, std::string& u32Value);
-    static std::string HandleResult(uint32_t u32Code, const std::string& strMessage, bool bIsError);
+    static bool GetIntegerValueFromJSonString(const std::string& strJSonData, const std::string& strKey, uint64_t& u64Value);
+    static bool GetStringValueFromJSonString(const std::string& strJSonData, const std::string& strKey, std::string& strValue);
+    static std::string HandleResult(uint64_t u64Code, const std::string& strMessage, bool bIsError);
 };
 
 #endif /* ZAPIUTIL_H */

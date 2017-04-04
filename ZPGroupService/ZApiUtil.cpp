@@ -48,7 +48,7 @@ uint64_t ZApiUtil::GetExpireTime(uint64_t u64Deadline)
 }
 #endif
 
-bool ZApiUtil::GetIntegerValueFromJSonString(const std::string& strJSonData, const std::string& strKey, uint32_t& u32Value)
+bool ZApiUtil::GetIntegerValueFromJSonString(const std::string& strJSonData, const std::string& strKey, uint64_t& u64Value)
 {
     if (strJSonData.empty() || strKey.empty())
         return false;
@@ -63,7 +63,7 @@ bool ZApiUtil::GetIntegerValueFromJSonString(const std::string& strJSonData, con
             return false;
         }
         
-        u32Value = object->getValue<uint32_t>(strKey);
+        u64Value = object->getValue<uint64_t>(strKey);
 
         return true;
     }
@@ -105,14 +105,14 @@ bool ZApiUtil::GetStringValueFromJSonString(const std::string& strJSonData, cons
     return false;
 }
 
-std::string ZApiUtil::HandleResult(uint32_t u32Code, const std::string& strMessage, bool bIsError)
+std::string ZApiUtil::HandleResult(uint64_t u64Code, const std::string& strMessage, bool bIsError)
 {
     if (bIsError) {
-        ZLogUtil::instance().Error("Response code=" + Poco::NumberFormatter::format(u32Code) + " mes=" + strMessage);
+        ZLogUtil::instance().Error("Response code=" + Poco::NumberFormatter::format(u64Code) + " mes=" + strMessage);
     }
     else {
-        ZLogUtil::instance().Debug("Response code=" + Poco::NumberFormatter::format(u32Code) + " mes=" + strMessage);
+        ZLogUtil::instance().Debug("Response code=" + Poco::NumberFormatter::format(u64Code) + " mes=" + strMessage);
     }
-    std::string strRet = ZApiUtil::GetResponseString(u32Code, strMessage);
+    std::string strRet = ZApiUtil::GetResponseString(u64Code, strMessage);
     return strRet;
 }
