@@ -849,3 +849,7 @@
 2017-04-04 15:52:28,280 : {Debug} Server Start on port:9999
 2017-04-04 15:52:33,867 : {Debug} Accept connection from 127.0.0.1:33890 URI /group/api/notification 44 bytes
 2017-04-04 15:53:04,155 : {Debug} Accept connection from 127.0.0.1:33896 URI /group/api/notification 50 bytes
+2017-04-04 17:34:47,636 : {Debug} Server Start on port:9999
+2017-04-04 17:34:53,482 : {Debug} Accept connection from 127.0.0.1:35248 URI /group/api/notification 48 bytes
+2017-04-04 17:39:47,923 : {Debug} Server Start on port:9999
+2017-04-04 17:39:53,136 : {Debug} Accept connection from 127.0.0.1:35276 URI /group/api/notification 44 bytes

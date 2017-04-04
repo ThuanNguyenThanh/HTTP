@@ -21,8 +21,6 @@ typedef struct RedisProccess {
     uint64_t u64Max = 0;
     uint64_t u64Min = 0;
     uint64_t u64Avg = 0;
-    uint64_t u64NumOfMsg = 0;
-    uint64_t u64TimeProccess = 0;
 } REDISPROCCESS;
 
 class ZRedisProcess {
@@ -41,18 +39,17 @@ public:
 
     uint64_t IncrKey(const std::string& strKey, int64_t& i64ErrCode);
 
-    bool HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue);
+    bool SetMsgIDInfo(uint64_t u64MsgID, const std::string& strField, const std::string& strValue);
 
-    bool SetUserIDAndSenderIDInfo(const std::string& strHash, const std::string& strFieldSID,
-            const std::string& strFieldUID, const std::string& strSenderID, const std::string& strUserID);
+    bool SetUserIDAndSenderIDInfo(uint64_t u64MsgID, uint64_t u64SenderID, uint64_t u64UserID);
 
-    bool IncreaseResult(const std::string& strHash, const std::string& strField, int64_t& uErrCode);
+    bool IncreaseResult(uint64_t u64MsgID, const std::string& strFieldResult, int64_t& uErrCode);
 
-    bool GetAverageTimeProccess(const std::string& strHash, const std::string& strField, const string& strGetTimeProcess);
+    bool GetAverageTimeProccess(uint64_t u64MsgID, uint64_t u64TimeProccess);
 
-    bool SumOfSenderID(const std::string & strField, const std::string& strValue, int64_t& i64ErrCode);
+    bool SumOfSenderID(const std::string& strFieldSenderID, uint64_t uSenderID, int64_t& i64ErrCode);
 
-    bool SumOfUserID(const std::string & strField, const std::string& strValue, int64_t& i64ErrCode);
+    bool SumOfUserID(const std::string & strFieldUserID, uint64_t uUserID, int64_t& i64ErrCode);
 };
 
 #endif /* ZREDISPROCESS_H */

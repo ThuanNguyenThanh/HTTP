@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+#include <stdint.h>
+
 #include"ZApiCalcHandler.h"
 #include "ZApiUtil.h"
 
@@ -48,13 +50,13 @@ void ZApiCalcHandler::GetJson(Poco::Net::HTTPServerRequest& request, Poco::Net::
     string strJSonData = "";
     HandleStringRequest(request, response, strJSonData, respStream);
 
-    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strKeySenderID, msg.uSenderID) == false)
+    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strFieldSenderID, msg.uSenderID) == false)
         return;
 
-    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strKeyUserID, msg.uUserID) == false)
+    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strFieldUserID, msg.uUserID) == false)
         return;
 
-    if (ZApiUtil::GetStringValueFromJSonString(strJSonData, msg.strKeyData, msg.strData) == false)
+    if (ZApiUtil::GetStringValueFromJSonString(strJSonData, msg.strFieldData, msg.strData) == false)
         return;
 }
 
@@ -82,45 +84,45 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
         return;
     }
 
-    std::string strHash = std::to_string(ZRedisProcess::GetInstance().IncrKey("MsgID", errCode.uErrCodeIncr));
+    uint64_t u64MsgID = ZRedisProcess::GetInstance().IncrKey("MsgID", errCode.uErrCodeIncr);
 
     // Save Message Infor
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeySenderID, std::to_string(msg.uSenderID)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldSenderID, std::to_string(msg.uSenderID)))
         return;
 
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyUserID, std::to_string(msg.uUserID)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldUserID, std::to_string(msg.uUserID)))
         return;
 
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyData, msg.strData))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldData, msg.strData))
         return;
 
     gettimeofday(&tv1, NULL);
     msg.ullTimeEnd = tv1.tv_usec;
     msg.ullTimeProcess = msg.ullTimeEnd - msg.ullTimeStart;
 
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyTimeStart, std::to_string(msg.ullTimeStart)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strKeyTimeStart, std::to_string(msg.ullTimeStart)))
         return;
 
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyTimeProcess, std::to_string(msg.ullTimeProcess)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeProcess, std::to_string(msg.ullTimeProcess)))
         return;
 
-    if (!ZRedisProcess::GetInstance().HSetMsgID(strHash, msg.strKeyResult, std::to_string(msg.uResult)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldResult, std::to_string(msg.uResult)))
         return;
 
     //Statistics SenderID, UserID
-    if (!ZRedisProcess::GetInstance().SetUserIDAndSenderIDInfo(strHash, msg.strKeySenderID, msg.strKeyUserID, std::to_string(msg.uSenderID), std::to_string(msg.uUserID)))
+    if (!ZRedisProcess::GetInstance().SetUserIDAndSenderIDInfo(u64MsgID, msg.uSenderID, msg.uUserID))
         return;
 
-    if (!ZRedisProcess::GetInstance().IncreaseResult(strHash, msg.strKeyResult, errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().IncreaseResult(u64MsgID, msg.strFieldResult, errCode.uErrCodeIncr))
         return;
 
-    if (!ZRedisProcess::GetInstance().GetAverageTimeProccess(strHash, msg.strKeyTimeProcess, std::to_string(msg.ullTimeProcess)))
+    if (!ZRedisProcess::GetInstance().GetAverageTimeProccess(u64MsgID,  msg.ullTimeProcess))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfSenderID(msg.strKeySenderID, std::to_string(msg.uSenderID), errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().SumOfSenderID(msg.strFieldSenderID, msg.uSenderID, errCode.uErrCodeIncr))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfUserID(msg.strKeyUserID, std::to_string(msg.uUserID), errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().SumOfUserID(msg.strFieldUserID, msg.uUserID, errCode.uErrCodeIncr))
         return;
 
     respStream << ZApiCalcHandler::ProcessData(msg, errCode);

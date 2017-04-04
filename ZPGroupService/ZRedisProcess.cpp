@@ -47,11 +47,13 @@ uint64_t ZRedisProcess::IncrKey(const std::string& strKey, int64_t& nErrorCode) 
     return uResult;
 }
 
-bool ZRedisProcess::HSetMsgID(const std::string& strHash, const std::string& strField, const std::string& strValue) {
-    if (strHash.empty() || strField.empty() || strValue.empty())
+bool ZRedisProcess::SetMsgIDInfo(uint64_t u64MsgID, const std::string& strField, const std::string& strValue) {
+    std::string strMsgID = std::to_string(u64MsgID);
+    
+    if (strMsgID.empty() || strField.empty() || strValue.empty())
         return false;
 
-    if (m_zcluster.HSet(strHash, strField, strValue) < 0) {
+    if (m_zcluster.HSet(strMsgID, strField, strValue) < 0) {
         return false;
     }
 
@@ -60,35 +62,40 @@ bool ZRedisProcess::HSetMsgID(const std::string& strHash, const std::string& str
 
 // SenderID send to UserID, MsgID
 
-bool ZRedisProcess::SetUserIDAndSenderIDInfo(const std::string& strHash, const std::string& strFieldSID,
-        const std::string& strFieldUID, const std::string& strSenderID, const std::string& strUserID) {
+bool ZRedisProcess::SetUserIDAndSenderIDInfo(uint64_t u64MsgID, uint64_t u64SenderID, uint64_t u64UserID) {
 
-    if (strHash.empty() || strFieldSID.empty() || strFieldUID.empty() || strSenderID.empty() || strUserID.empty())
+    std::string strMsgID = std::to_string(u64MsgID);
+    std::string strSenderID = std::to_string(u64SenderID);
+    std::string strUserID = std::to_string(u64UserID);
+
+    if (strMsgID.empty() || std::to_string(u64SenderID).empty() || std::to_string(u64UserID).empty())
         return false;
 
-    if (m_zcluster.SAdd("senderid:" + strSenderID, "userid:" + strUserID) < 0)
+    if (m_zcluster.SAdd("ns:listmsgsenderid:" + strSenderID + ":list", strMsgID) < 0)//List msgID of SenderID
         return false;
-    //Save userID of SenderID
-    if (m_zcluster.SAdd("senderid:" + strSenderID, "msgid:" + strHash) < 0)
-        return false; //Save msgID of SenderID
 
-    if (m_zcluster.SAdd("userid:" + strUserID, "senderid:" + strSenderID) < 0)
-        return false; //Save SenderID of userID
+    if (m_zcluster.SAdd("ns:listmsguserid:" + strUserID + ":list", strMsgID) < 0)//List msgID of UserID
+        return false;
 
-    if (m_zcluster.SAdd("userid:" + strUserID, "msgid:" + strHash) < 0)
-        return false; //Save msgID of userID
+    if (m_zcluster.SAdd("ns:listuserid:" + strSenderID, ":list" + strUserID) < 0) //List UserID of SenderID
+        return false;
+
+    if (m_zcluster.SAdd("ns:listsenderid:" + strUserID + ":list", strSenderID) < 0) //List Sender of UserID
+        return false;
 
     return true;
 }
 
-bool ZRedisProcess::IncreaseResult(const std::string& strHash, const std::string& strField, int64_t& uErrCode) {
-    if (strHash.empty() || strField.empty())
+bool ZRedisProcess::IncreaseResult(uint64_t u64MsgID, const std::string& strFieldResult, int64_t& uErrCode) {
+    std::string strMsgID = std::to_string(u64MsgID);
+
+    if (strMsgID.empty() || strFieldResult.empty())
         return false;
 
     if (IncrKey("countsumrequest", uErrCode) == 0)
         return false;
 
-    if (m_zcluster.HGetInteger(strHash, strField)) {
+    if (m_zcluster.HGetInteger(strMsgID, strFieldResult)) {
         if (IncrKey("countreqsuccess", uErrCode) == 0)
             return false;
     } else {
@@ -99,41 +106,39 @@ bool ZRedisProcess::IncreaseResult(const std::string& strHash, const std::string
     return true;
 }
 
-bool ZRedisProcess::GetAverageTimeProccess(const std::string& strHash, const std::string& strField, const string& strGetTimeProcess) {
-    if (strHash.empty() || strField.empty() || strGetTimeProcess.empty())
+bool ZRedisProcess::GetAverageTimeProccess(uint64_t u64MsgID, uint64_t u64TimeProccess) {
+    std::string strMsgID = std::to_string(u64MsgID);
+
+    if (strMsgID.empty())
         return false;
 
     REDISPROCCESS RdPro;
 
-    Poco::NumberParser::tryParseUnsigned64(strHash, RdPro.u64NumOfMsg);
-    Poco::NumberParser::tryParseUnsigned64(strGetTimeProcess, RdPro.u64TimeProccess);
+    if (u64MsgID == 1) {
+        RdPro.u64Avg = RdPro.u64Max = RdPro.u64Min = u64TimeProccess;
 
-
-    if (RdPro.u64NumOfMsg == 1) {
-        RdPro.u64Avg = RdPro.u64Max = RdPro.u64Min = RdPro.u64TimeProccess;
-        
         if (m_zcluster.Set("maxtimepro", std::to_string(RdPro.u64Max)) == false)
             return false;
 
         if (m_zcluster.Set("mintimepro", std::to_string(RdPro.u64Min)) == false)
             return false;
-        
+
     } else {
         uint64_t uTempAvgTime = m_zcluster.GetInteger("avgtimepro");
-        RdPro.u64Avg = (RdPro.u64TimeProccess + uTempAvgTime * (RdPro.u64NumOfMsg - 1)) / RdPro.u64NumOfMsg;
+        RdPro.u64Avg = (u64TimeProccess + uTempAvgTime * (u64MsgID - 1)) / u64MsgID;
     }
 
     if (m_zcluster.Set("avgtimepro", std::to_string(RdPro.u64Avg)) == false)
         return false;
 
-    if (m_zcluster.GetInteger("maxtimepro") < RdPro.u64TimeProccess) {
-        RdPro.u64Max = RdPro.u64TimeProccess;
+    if (m_zcluster.GetInteger("maxtimepro") < u64TimeProccess) {
+        RdPro.u64Max = u64TimeProccess;
         m_zcluster.Set("maxtimepro", std::to_string(RdPro.u64Max));
         return true;
     }
 
-    if (m_zcluster.GetInteger("mintimepro") > RdPro.u64TimeProccess) {
-        RdPro.u64Min = RdPro.u64TimeProccess;
+    if (m_zcluster.GetInteger("mintimepro") > u64TimeProccess) {
+        RdPro.u64Min = u64TimeProccess;
         m_zcluster.Set("mintimepro", std::to_string(RdPro.u64Min));
         return true;
     }
@@ -141,11 +146,11 @@ bool ZRedisProcess::GetAverageTimeProccess(const std::string& strHash, const std
     return true;
 }
 
-bool ZRedisProcess::SumOfSenderID(const std::string& strField, const std::string& strValue, int64_t& i64ErrCode) {
-    if (strField.empty() || strValue.empty())
+bool ZRedisProcess::SumOfSenderID(const std::string& strFieldSenderID, uint64_t uSenderID, int64_t& i64ErrCode) {
+    if (strFieldSenderID.empty() || std::to_string(uSenderID).empty())
         return false;
 
-    int64_t uCheckSenderIDExist = m_zcluster.SAdd("senderidexist", strValue);
+    int64_t uCheckSenderIDExist = m_zcluster.SAdd("senderidexist", std::to_string(uSenderID));
 
     if (uCheckSenderIDExist > 0) {
         if (IncrKey("countsenderid", i64ErrCode) == 0)
@@ -155,11 +160,11 @@ bool ZRedisProcess::SumOfSenderID(const std::string& strField, const std::string
     return true;
 }
 
-bool ZRedisProcess::SumOfUserID(const std::string & strField, const std::string & strValue, int64_t& i64ErrCode) {
-    if (strField.empty() || strValue.empty())
+bool ZRedisProcess::SumOfUserID(const std::string & strFieldUserID, uint64_t uUserID, int64_t& i64ErrCode) {
+    if (strFieldUserID.empty() || std::to_string(uUserID).empty())
         return false;
 
-    int64_t uCheckUserIDExist = m_zcluster.SAdd("useridexist", strValue); //ZSCORE UserID UserIDExist
+    int64_t uCheckUserIDExist = m_zcluster.SAdd("useridexist", std::to_string(uUserID)); //ZSCORE UserID UserIDExist
 
     if (uCheckUserIDExist > 0) {
         if (IncrKey("countuserid", i64ErrCode) == 0)
