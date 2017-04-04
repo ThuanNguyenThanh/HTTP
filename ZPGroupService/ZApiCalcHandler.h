@@ -39,6 +39,7 @@ typedef struct tagMessageInfo {
     //Time start process
     std::string strKeyTimeStart = "TimeStart";
     unsigned long long ullTimeStart = 0;
+    //std::string strTimeStart = "";
     unsigned long long ullTimeEnd = 0;
     unsigned long long ullTimeProcess = 0;
 
@@ -47,22 +48,17 @@ typedef struct tagMessageInfo {
     
     //Result process
     std::string strKeyResult = "Result";
-    std::string strResult = RandomResult();
+    uint64_t uResult = RandomResult();
 
-    std::string RandomResult() {
-        std::string strResult = "";
+    uint64_t RandomResult() {
         srand(time(NULL)); //Randomize seed initialization
-        uint16_t uValueRand = rand() % 2; // Generate a random number between 0 and 1
-
-        if (uValueRand == 1)
-            strResult = "Success";
-        else
-            strResult = "Fail";
-        return strResult;
+        return rand() % 2; // Generate a random number between 0 and 1
     }
-
-
 } MSGINFO;
+
+typedef struct ErrorCode {
+    int64_t uErrCodeIncr;
+}ERRCODE;
 
 class ZApiCalcHandler : public Poco::Net::HTTPRequestHandler {
 protected:
@@ -72,7 +68,7 @@ public:
     ~ZApiCalcHandler();
 
     void HandleStringRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response, std::string& strJSonData, std::ostream& respStream);
-    std::string ProcessData(const MSGINFO&);
+    std::string ProcessData(const MSGINFO&, const ERRCODE& errCode);
     void handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response);
     void GetJson(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response, std::ostream& respStream, MSGINFO&);
 };

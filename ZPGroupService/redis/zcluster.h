@@ -209,7 +209,7 @@ public:
         if (!reply)
             return bRet;
 
-        if ((reply->type == REDIS_REPLY_STRING) && reply->str) {
+        if ((reply->type == REDIS_REPLY_STATUS) && reply->str) {
             bRet = (strcasecmp(reply->str, "OK") == 0);
         }
 
@@ -456,6 +456,8 @@ public:
         return i64Ret;
     }
 
+    
+    
     int64_t ZScore(const std::string& strKey, const std::string& strMember) {
         int64_t i64Ret = -1;
         if (!m_pCluster || strKey.empty() || strMember.empty())
