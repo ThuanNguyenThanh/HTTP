@@ -48,13 +48,13 @@ public:
 
     bool SetUserIDAndSenderIDInfo(uint64_t u64MsgID, uint64_t u64SenderID, uint64_t u64UserID);
 
-    bool IncreaseResult(uint64_t u64MsgID, const std::string& strFieldResult, int64_t& uErrCode);
+    bool IncreaseResult(uint64_t u64MsgID, int64_t& uErrCode);
 
     bool GetAverageTimeProccess(uint64_t u64MsgID, uint64_t u64TimeProccess);
 
-    bool SumOfSenderID(const std::string& strFieldSenderID, uint64_t uSenderID, int64_t& i64ErrCode);
+    bool CountSenderID(uint64_t uSenderID);
 
-    bool SumOfUserID(const std::string & strFieldUserID, uint64_t uUserID, int64_t& i64ErrCode);
+    bool CountUserID(uint64_t uUserID);
 };
 
 #endif /* ZREDISPROCESS_H */

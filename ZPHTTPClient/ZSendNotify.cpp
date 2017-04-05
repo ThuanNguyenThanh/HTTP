@@ -64,7 +64,7 @@ std::string ZSendNotify::MessageID(uint32_t uSenderID, uint32_t uUserID, std::st
 {
     if(uSenderID > 4294967293 || uSenderID > 4294967293 || strData == "")
         return "";
-    std::string strMsgID = "{\"SenderID\":" + std::to_string(uSenderID) + ", " + "\"UserID\":" + std::to_string(uUserID) + ", " + "\"Data\":" + "\"" + strData + "\"}";
+    std::string strMsgID = "{\"senderid\":" + std::to_string(uSenderID) + ", " + "\"userid\":" + std::to_string(uUserID) + ", " + "\"data\":" + "\"" + strData + "\"}";
     return strMsgID;
 }
 

@@ -152,6 +152,8 @@
       </item>
       <item path="ZLogUtil.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ZMsgDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ZRedisDefine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ZRedisProcess.cpp" ex="false" tool="1" flavor2="0">
@@ -273,6 +275,8 @@
       <item path="ZLogUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ZLogUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ZMsgDefine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ZRedisDefine.h" ex="false" tool="3" flavor2="0">
       </item>

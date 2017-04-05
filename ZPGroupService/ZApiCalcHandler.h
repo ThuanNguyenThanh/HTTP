@@ -23,28 +23,19 @@
 
 typedef struct tagMessageInfo {
     //SenderID
-    std::string strFieldSenderID = "SenderID";
     uint64_t uSenderID = 0;
 
     //UserID
-    std::string strFieldUserID = "UserID";
     uint64_t uUserID = 0;
 
     //Data
-    std::string strFieldData = "Data";
     std::string strData = "";
 
     //Time start process
-    std::string strFieldTimeStart = "TimeStart";
     uint64_t u64TimeStart = 0;
     uint64_t u64TimeEnd = 0;
     uint64_t u64TimeProcess = 0;
-
-    //Time proccess
-    std::string strFieldTimeProcess = "TimeProccess";
-    
     //Result process
-    std::string strFieldResult = "Result";
     uint64_t uResult = RandomResult();
 
     uint64_t RandomResult() {

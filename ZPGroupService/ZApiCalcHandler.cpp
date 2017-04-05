@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 #include <stdint.h>
-
+#include "ZMsgDefine.h"
 #include"ZApiCalcHandler.h"
 #include "ZApiUtil.h"
+#include "ZMsgDefine.h"
+
 
 ZApiCalcHandler::ZApiCalcHandler() {
 
@@ -50,13 +52,13 @@ void ZApiCalcHandler::GetJson(Poco::Net::HTTPServerRequest& request, Poco::Net::
     string strJSonData = "";
     HandleStringRequest(request, response, strJSonData, respStream);
 
-    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strFieldSenderID, msg.uSenderID) == false)
+    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, RDS_MSG_INFO_FIELD_SENDERID, msg.uSenderID) == false)
         return;
 
-    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, msg.strFieldUserID, msg.uUserID) == false)
+    if (ZApiUtil::GetIntegerValueFromJSonString(strJSonData, RDS_MSG_INFO_FIELD_USERID, msg.uUserID) == false)
         return;
 
-    if (ZApiUtil::GetStringValueFromJSonString(strJSonData, msg.strFieldData, msg.strData) == false)
+    if (ZApiUtil::GetStringValueFromJSonString(strJSonData, RDS_MSG_INFO_FIELD_DATA, msg.strData) == false)
         return;
 }
 
@@ -87,42 +89,42 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     uint64_t u64MsgID = ZRedisProcess::GetInstance().IncrKey("MsgID", errCode.uErrCodeIncr);
 
     // Save Message Infor
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldSenderID, msg.uSenderID))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, RDS_MSG_INFO_FIELD_SENDERID, msg.uSenderID))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldUserID, msg.uUserID))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, RDS_MSG_INFO_FIELD_USERID, msg.uUserID))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldData, msg.strData))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID,RDS_MSG_INFO_FIELD_DATA, msg.strData))
         return;
 
     gettimeofday(&tv1, NULL);
     msg.u64TimeEnd = tv1.tv_usec;
     msg.u64TimeProcess = msg.u64TimeEnd - msg.u64TimeStart;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeStart, msg.u64TimeStart))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID,RDS_MSG_INFO_FIELD_TIME_START, msg.u64TimeStart))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeProcess, msg.u64TimeProcess))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID,RDS_MSG_INFO_FIELD_TIME_PROCCESS, msg.u64TimeProcess))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldResult, msg.uResult))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID,RDS_MSG_INFO_FIELD_RESULT, msg.uResult))
         return;
 
     //Statistics SenderID, UserID
     if (!ZRedisProcess::GetInstance().SetUserIDAndSenderIDInfo(u64MsgID, msg.uSenderID, msg.uUserID))
         return;
 
-    if (!ZRedisProcess::GetInstance().IncreaseResult(u64MsgID, msg.strFieldResult, errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().IncreaseResult(u64MsgID, errCode.uErrCodeIncr))
         return;
 
     if (!ZRedisProcess::GetInstance().GetAverageTimeProccess(u64MsgID,  msg.u64TimeProcess))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfSenderID(msg.strFieldSenderID, msg.uSenderID, errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().CountSenderID(msg.uSenderID))
         return;
 
-    if (!ZRedisProcess::GetInstance().SumOfUserID(msg.strFieldUserID, msg.uUserID, errCode.uErrCodeIncr))
+    if (!ZRedisProcess::GetInstance().CountUserID(msg.uUserID))
         return;
 
     respStream << ZApiCalcHandler::ProcessData(msg, errCode);
