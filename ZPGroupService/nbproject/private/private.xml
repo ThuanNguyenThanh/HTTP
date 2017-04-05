@@ -11,9 +11,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="ZP Notify"/>
         <group>
-            <file>file:/home/cpu10197-local/HTTP/ZPGroupService/ZRedisProcess.h</file>
-            <file>file:/home/cpu10197-local/HTTP/ZPGroupService/redis/zcluster.h</file>
-            <file>file:/home/cpu10197-local/HTTP/ZPGroupService/ZRedisProcess.cpp</file>
+            <file>file:/home/thuannguyen/HTTP/ZPGroupService/ZRedisProcess.h</file>
+            <file>file:/home/thuannguyen/HTTP/ZPGroupService/ZApiCalcHandler.cpp</file>
+            <file>file:/home/thuannguyen/HTTP/ZPGroupService/ZRedisProcess.cpp</file>
+            <file>file:/home/thuannguyen/HTTP/ZPGroupService/ZApiCalcHandler.h</file>
         </group>
     </open-files>
 </project-private>

@@ -77,7 +77,7 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     GetJson(request, response, respStream, msg);
 
     gettimeofday(&tv, NULL);
-    msg.ullTimeStart = tv.tv_usec;
+    msg.u64TimeStart = tv.tv_usec;
 
     if (!bCheckInit) {
         std::cerr << "Can not connect to redis cluster!!!" << std::endl;
@@ -87,26 +87,26 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     uint64_t u64MsgID = ZRedisProcess::GetInstance().IncrKey("MsgID", errCode.uErrCodeIncr);
 
     // Save Message Infor
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldSenderID, std::to_string(msg.uSenderID)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldSenderID, msg.uSenderID))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldUserID, std::to_string(msg.uUserID)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldUserID, msg.uUserID))
         return;
 
     if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldData, msg.strData))
         return;
 
     gettimeofday(&tv1, NULL);
-    msg.ullTimeEnd = tv1.tv_usec;
-    msg.ullTimeProcess = msg.ullTimeEnd - msg.ullTimeStart;
+    msg.u64TimeEnd = tv1.tv_usec;
+    msg.u64TimeProcess = msg.u64TimeEnd - msg.u64TimeStart;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strKeyTimeStart, std::to_string(msg.ullTimeStart)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeStart, msg.u64TimeStart))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeProcess, std::to_string(msg.ullTimeProcess)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldTimeProcess, msg.u64TimeProcess))
         return;
 
-    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldResult, std::to_string(msg.uResult)))
+    if (!ZRedisProcess::GetInstance().SetMsgIDInfo(u64MsgID, msg.strFieldResult, msg.uResult))
         return;
 
     //Statistics SenderID, UserID
@@ -116,7 +116,7 @@ void ZApiCalcHandler::handleRequest(Poco::Net::HTTPServerRequest& request, Poco:
     if (!ZRedisProcess::GetInstance().IncreaseResult(u64MsgID, msg.strFieldResult, errCode.uErrCodeIncr))
         return;
 
-    if (!ZRedisProcess::GetInstance().GetAverageTimeProccess(u64MsgID,  msg.ullTimeProcess))
+    if (!ZRedisProcess::GetInstance().GetAverageTimeProccess(u64MsgID,  msg.u64TimeProcess))
         return;
 
     if (!ZRedisProcess::GetInstance().SumOfSenderID(msg.strFieldSenderID, msg.uSenderID, errCode.uErrCodeIncr))

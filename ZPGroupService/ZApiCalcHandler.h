@@ -35,11 +35,10 @@ typedef struct tagMessageInfo {
     std::string strData = "";
 
     //Time start process
-    std::string strKeyTimeStart = "TimeStart";
-    unsigned long long ullTimeStart = 0;
-    //std::string strTimeStart = "";
-    uint64_t ullTimeEnd = 0;
-    uint64_t ullTimeProcess = 0;
+    std::string strFieldTimeStart = "TimeStart";
+    uint64_t u64TimeStart = 0;
+    uint64_t u64TimeEnd = 0;
+    uint64_t u64TimeProcess = 0;
 
     //Time proccess
     std::string strFieldTimeProcess = "TimeProccess";
@@ -70,8 +69,6 @@ public:
     void handleRequest(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response);
     void GetJson(Poco::Net::HTTPServerRequest& request, Poco::Net::HTTPServerResponse& response, std::ostream& respStream, MSGINFO&);
 };
-
-
 
 #endif
 
